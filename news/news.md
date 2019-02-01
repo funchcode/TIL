@@ -8,3 +8,7 @@
 	 - 개발하는 데에 있어 한번 읽어두면 유용할 글이다.
  - [프로그래머서의 성장을 도왔던 태도](https://ahnheejong.name/articles/becoming-better-programmer/)
 	 - 누군가가 몇 년 동안 깨우쳐 온 바른 성장에 대한 예시를 들을 수 있다.
+ - [알고리즘 공부 방법/순서](https://baactree.tistory.com/14)
+	 - 초급부터 고급까지 어떻게 시작하면 좋을지 모르겠을 때 보면 좋을 것 같다.
+ - [브라우저는 어떻게 동작하는가?](https://d2.naver.com/helloworld/59361)
+	 - 브라우저 동작에 대한 글이다(html,css,js).

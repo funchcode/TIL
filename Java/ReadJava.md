@@ -55,13 +55,13 @@
 >  설정 시에 하위 클래스(@Component)를 모두 Bean으로 등록
 
 > **의존의 문제점**
-> A Object가 B Object에 의존해 사용하는 관계일 때\
-> 의존성이 높은 경우에는 B Object에 로직이나 메서드 명이 변경될 시에 A Object에도 영향을 미치게 된다.\
+> A Object가 B Object에 의존해 사용하는 관계일 때<br/>
+> 의존성이 높은 경우에는 B Object에 로직이나 메서드 명이 변경될 시에 A Object에도 영향을 미치게 된다.<br/>
 > '어떻게 의존성을 줄일 수 있을까'라는 고민에서 시작된 패턴 중 하나가 DI이다 [*다른 패턴들은 뭐가 있을까(나중에 정리)*]
 
 .
 
 
 ### 도움을 받은 사이트 & 블로그
-> [SpringFramework](https://www.tutorialspoint.com/)(튜토리얼)
+> [SpringFramework](https://www.tutorialspoint.com/)(튜토리얼)<br/>
 > [SLiPP WiKi](https://www.slipp.net/wiki/pages/viewpage.action?pageId=25527606)(SpringFramework)
