@@ -1,3 +1,4 @@
+import java.util.Arrays;
 
 public class Quiz {
     // Q1. 문자열에 포함된 문자(ASCII)들이 전부 유일한지를 검사하는 알고리즘을 구현하라.
@@ -33,12 +34,29 @@ public class Quiz {
     }    
 
     // Q3. 문자열 두 개를 입력으로 받아 그중 하나가 다른 하나의 순열인지 판별하는 메서드를 작성하라.
+    public static void permutationQuiz() {
+        String input1 = "abc";
+        String input2 = "cabcabcabcabcabcab";
+
+        
+    }
 
     // Q4. 주어진 문자열 내의 모든 공백을 '%20'으로 바꾸는 메서드를 작성하라.
     // 문자열 끝에 추가로 필요한 문자들을 더할 수 있는 충분한 공간이 있다고 가정하라.
     // 그리고 공백을 포함하는 문자열의 길이도 함께 주어진다고 가정하라.
     // 문자 배열을 사용하여 필요한 연산을 각 문자에 바로 적용할 수 있도록.
     // 예) 입력 : "Mr John Smith    , 13" // 출력 : "Mr%20John%20Smith"
+    public static void changeBlank() {
+        String input = "Republic Of Korea     , 17";
+
+        if(input.length() == 0) System.out.println("비어있는 문자열입니다. 종료합니다.");
+        
+        int size = Integer.parseInt(input.substring(input.lastIndexOf(',') + 1).trim());
+        String temp = input.substring(0, size);
+        temp = temp.replaceAll(" ", "%20");
+
+        System.out.println(temp);
+    }
 
     // Q5. 같은 문자가 연속으로 반복될 경우, 그 횟수를 사용해 문자열을 압축하는 메서드를 구현하라.
     // 예) 입력 : "aabccccccccaaa" // 출력 : "a2b1c8a3"
@@ -58,6 +76,7 @@ public class Quiz {
     public static void main(String[] args) {
         System.out.println("Class Test!");
         //chartQuiz();
-        reverseQuiz();
+        //reverseQuiz();
+        changeBlank();
     }
 }
