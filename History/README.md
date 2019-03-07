@@ -27,8 +27,8 @@
 	- v-if : 런타임 시 조건이 바뀌지 않을 때 적절.
 - **v-for**
 	- v-for 블록 안에는 부모 범위 속성에 대한 모든 권한이 있다.
-	<li v-for="item in items">
-	<li v-for="item of items">
+	`<li v-for="item in items">`
+	`<li v-for="item of items">`
 	- 반복되는 DOM 내용이 단순하지 않거나 의도적인 성능 향상을 위해 기본 동작에 의존하지 않는 한 가능하면 언제나 key를 추가하는 것이 좋다.
 - 배열 주의할 점
 	- **JavaScript 제한으로 인해 주의할 점이 몇 가지 있다.**
@@ -37,9 +37,9 @@
 	- 해결 :
 	Vue.set(example1.items, indexOfitem, newValue)
 	- 문제 2 : 배열 길이를 수정하는 경우
-	va.items.length = newLength
+	`vm.items.length = newLength`
 	- 해결 :
-	example1.items.splice(newLength)
+	`example1.items.splice(newLength)`
 - 객체 주의할 점
 	- **JavaScript의 한계로 Vue는 속성 추가 및 삭제**를 감지하지 못한다.
 	- 해결 방법 : set을 이용한다. 혹은 vm.$set.
@@ -73,7 +73,50 @@
 - 상위 템플릿의 모든 내용은 상위 범위로 컴파일된다. 하위 템플릿의 모든 내용은 하위 범위에서 컴파일된다.
 	- **slot**는 대체 콘텐츠로 보면 된다.
 
+---
+> NextStep 3장 실습
+- 새로운 무엇인가를 학습할 때 내가 이해한 수준까지 직접 라이브러리 또는 프레임워크를 구현해봄으로써 학습에 대한 깊이를 더해가는 방식을 추천.
+- **애자일 프로세스**
+	- Agile : 기민한, 좋은 것을 빠르고 낭비없게 만드는 것.
+	- 아무런 계획이 없는 개발 방법과 계획이 지나치게 많은 개발 방법들 사이에서 타협점을 찾고자 하는 방법론이다.
+	- 계획을 통해서 주도해 나갔던 과거의 방법론과는 다르게 앞을 예측하지 않고, 일정한 주기를 끊임없이 프로토 타입을 만들어내며 그때 그때 필요한 요구를 더하고 수정하여 하나의 커다란 소프트웨어를 개발해 나가는 adaptive style이라고 할 수 있다.
+- 각 주제에 대한 깊이는 깊지 않을 수 있지만 프론트엔드부터 백엔드까지 기능을 구현한 후 개발 서버(또는 실 서버)에 배포하는 경험까지를 한 반복주기로 생각하고 학습할 수 있다.
+	- 이점1 : 소프트웨어 전체과정을 빠르게 경험함으로써 현재 상태에서 자신이 모르고 있는 부분이 무엇인지, 부족한 점이 무엇인지 빠르게 파악할 수 있다.
+	- 이점2 : 자신이 가장 자신없는 부분과 흥미를 가진 부분을 캐치할 수 있다.
+
+---
+> AWS(Amazon Web Service)
+- 인스턴스와 저장소는 분리되어 있는 장치이다.
+- Security Group
+	- SSH : 원격제어의 방식(리눅스,유닉스)
+	- RDP : 원격제어의 방식(윈도우)
+- 에러 : 인스턴스 생성 중 Security Group이 이미 존재한다.
+	- 해결 : Security Group의 이름을 다르게 하던가, 삭제를 한다.
+- 인스턴스 연결(mac)
+	- SSH client가 이미 지원된다.(=terminal)
+	₩ssh -i "비밀번호" 아이디@아이피₩
+- 터미널 : 공백이 있는 파일 선택 방법
+	- " "로 묶어서 작업하면 된다.
+- Ubuntu
+	- sudo apt-get install apache2
+	- apt-get update
+	- 계정추가 : sudo adduser
+	- sudo권한부여 : sudo visudo, 사용자명 ALL=(ALL:ALL) ALL, 파일 덮어쓰기
+	- 인코딩 관련 : sudo locale-gen ko_KR.EUC-KR ko_KR.UTF-8
+	- 해당 계정 인코딩 설정 : sudo nano .bash_profile, LANG & LANGUAGE
+	- 반영 : source .bash_profile	
+	- 현재 운영체제 비트 : getconf LONG_BIT
+	- etc/profile : 모든 사용자
+	- root/ : root
+	- 사용자 : /home/사용자
+	- java -cp : ClassPath로 참조하려는 클래스가 위치한 경로를 설정하는 옵션이다.
+	- kill -9 : 사용중인 프로세스 제거
 
 > 부족한 개념, 다시 정리가 필요한 개념들
 - XSS 취약점
 - preventDefault
+- 애자일 소프트웨어 개발
+- SSH
+- 공개키, 비공개키
+- Apache
+- apt-get, wget
