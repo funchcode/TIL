@@ -52,15 +52,21 @@ public class Quiz {
         if(input.length() == 0) System.out.println("비어있는 문자열입니다. 종료합니다.");
         
         int size = Integer.parseInt(input.substring(input.lastIndexOf(',') + 1).trim());
-        String temp = input.substring(0, size);
-        temp = temp.replaceAll(" ", "%20");
+        String output = input.substring(0, size);
+        output = output.replaceAll(" ", "%20");
 
-        System.out.println(temp);
+        System.out.println(output);
     }
 
     // Q5. 같은 문자가 연속으로 반복될 경우, 그 횟수를 사용해 문자열을 압축하는 메서드를 구현하라.
     // 예) 입력 : "aabccccccccaaa" // 출력 : "a2b1c8a3"
     // 결과가 입력의 길이와 같을 경우 원래 문자열을 그대로 반환해야한다.
+    public static void compression() {
+        String input = "aabccccccccaaa";
+        String excep = "abcdefg";
+
+        
+    }
 
     // Q6. 이미지를 표현하는 N*N행렬이 있다.
     // 이미지의 각 픽셀은 4바이트로 표현된다.
