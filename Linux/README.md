@@ -1,4 +1,27 @@
+## 주말을 이용하여 Github Blog에 꼭 정리하자.
+> <h3>규칙</h3>
+> 1. **Linux** 관련 대략적인 개념 정리를 해 놓는 창고이다.<br/>
+> 2. <span style="color:red"><b>빨간색</b></span> : 좀 더 학습할 필요가 있는 주제(블로그에 정리)<br/>
+---
 
+> <span><h3>Ubuntu</h3></span>
+sudo apt-get install apache2<br/>
+apt-get update<br/>
+계정추가 : sudo adduser<br/>
+sudo권한부여 : sudo visudo, 사용자명 ALL=(ALL:ALL) ALL, 파일 덮어쓰기<br/>
+인코딩 관련 : sudo locale-gen ko_KR.EUC-KR ko_KR.UTF-8<br/>
+해당 계정 인코딩 설정 : sudo nano .bash_profile, LANG & LANGUAGE<br/>
+반영 : source .bash_profile	<br/>
+현재 운영체제 비트 : getconf LONG_BIT<br/>
+etc/profile : 모든 사용자<br/>
+root/ : root<br/>
+사용자 : /home/사용자<br/>
+java -cp : ClassPath로 참조하려는 클래스가 위치한 경로를 설정하는 옵션이다.<br/>
+kill -9 : 사용중인 프로세스 제거<br/>
+ufw : 방화벽 설정 명령어<br/>
+su : 계정변경<br/>
+
+---
 ## Linux Redirection
 입출력(I/O) 방향지정을 말한다.<br/>
 - stdout(표준출력) / stderr(표준오류)를 설정할 수 있다.
