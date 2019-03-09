@@ -1,7 +1,7 @@
 ## 주말을 이용하여 Github Blog에 꼭 정리하자.
 > <h3>규칙</h3>
 > 1. **AWS** 관련 대략적인 개념 정리를 해 놓는 창고이다.<br/>
-> 2. <span style="color:red"><b>빨간색</b></span> : 좀 더 학습할 필요가 있는 주제(블로그에 정리)<br/>
+> 2. <span style="color:red"><b><u>밑줄</u></b></span> : 좀 더 학습할 필요가 있는 주제(블로그에 정리)<br/>
 ---
 
 > <span><h3>EC2</h3></span>
