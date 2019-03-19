@@ -9,6 +9,9 @@
 - 서블릿은 웹 서버의 Controller, HttpRequest, HttpResponse를 추상화해 인터페이스로 정의한 표준이다.
 	- 클라이언트의 요청과 응답에 대한 표준
 - 서블릿 컨테이너는 서버가 시작할 때 서블릿 인스턴스를 생성해, 요청 URL과 서블릿 인스턴스를 연결해 놓는다.
+- """""AWS""""""
+- 설치된 톰캣버전 확인 : sudo /usr/share/tomcat8/bin/version.sh
+- """""""""""
 
 > Java GC (Garbage Collection)
 - stop the world
@@ -30,10 +33,31 @@
 - **HttpOnly :** 서버 요청이 있을 때에만 쿠키가 전송되도록 설정. JavaScript에서의 엑세스를 금지하기 위해 사용. XSS 공격에 의한 피해를 줄일 수 있다.
 - max-age, expires를 설정하지 않는 경우 브라우저 윈도우가 닫힐 때까지만 유효하다.<br/>
 
-> **부족한 개념, 정리가 필요한 개념들**
+> **Spring Boot 학습** [이동욱개발자(창천향로)님 감사합니다](https://jojoldu.tistory.com/)
+
+- **@RestController :** 하나의 URI는 하나의 고유한 리소스를 대표하도록 설계하는 개념이다. REST방식으로 제공되는 외부연결을 Restfull하다고 표현한다.
+	- **spring3**에서는 @ResponseBody
+	- **spring4**에서는 @RestController
+	- jsp 등의 뷰를 생성하지 않고 데이터만 반환한다.
+- 스프링에서는 JSON 데이터를 처리하기 위해 **jackson**라이브러리가 필요하다.
+- **@GeneratedValue :** MySQL의 autoIncrement와 같다.
+- **@Builder 패턴:** AccessLevel에서 protected로 생성자 생성에 제한을 건 상황, setter가 필요하지만 무분별한 사용이 우려될때 사용, public 생성자를 추가해서는 받는 param의 위치에 대한 정확한 정보 확인이 어렵다거나 실수할 수 있고 데이터를 잘 못 입력했을 때 에러를 알 수 없으므로 사용한다.
+	- **Lombok**에 해당한다.
+- Bean을 주입하는 세가지 방법.
+	- 1. **@Autowired** 2. **setter** 3. **생성자**
+- Entity Class와 Controller에서 사용할 DTO는 반드시 분리하는 것이 좋다.
+- Html 등 view 소스 없이 POST 요청이나 REST 테스트 시에 'Postman'을 사용하면 된다.
+	- intellij에서는 'command+n'에서 .http를 통해 테스트할 수 있다.
+
+
+> **🚨부족한 개념, 정리가 필요한 개념들🚨**
 - 컬렉션 (Collection) 정리
 - 스트림 (Stream<E>) 정리
 - 반복자 (Iterator) 정리
+- 쉘 스크립트 정리
+- .properties와 .yml의 차이 : 유연함의 차이(<)
+- JPA Auditing : 생성일자, 수정일자, 수정자, 생성자 자동
+- BDD (Behavior-Driven-Development) : test코드 given, when, then
 
 ---
 > <h2>2019.03.2</h2>
