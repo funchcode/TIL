@@ -12,6 +12,12 @@
 - """""AWS""""""
 - 설치된 톰캣버전 확인 : sudo /usr/share/tomcat8/bin/version.sh
 - """""""""""
+> **NextStep 5장 실습**
+- **익명 클래스 :** '클래스 선언 + 객체 선언' 동시에 한다(=일회용클래스). 타입으론 조상클래스 명이나 인터페이스 명을 사용한다(=Method Override).
+- **Exception :** 3가지 예외발생 방법(1. Error, 2. 체크예외, 3.RuntimeException)
+- **가변인자 :** ...을 사용해서 가변 인자 사용을 알린다.
+- **람다식 :** 핵심은 지울 수 있는 건 모두 지워서 코드를 깔끔하게 유지하자(=컴파일러 추론에 의지).
+	+ **@FunctionalInterface**는 해당 인터페이스는 함수형 인터페이스로 추상메서드를 하나만 가질 수 있다고 알려주는 것이다.
 
 > Java GC (Garbage Collection)
 - stop the world
@@ -88,6 +94,10 @@
 - Gradle 사용법, 동작원리, 문법확인
 - org.springframework.data.annotation.*
 - 무중단배포
+- 익명클래스
+- Exception의 종류와 정의
+- 자바 가변인자 문법
+- 자바 람다식
 
 ---
 > <h2>2019.03.2</h2>
