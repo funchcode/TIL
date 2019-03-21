@@ -48,7 +48,34 @@
 - Entity Class와 Controller에서 사용할 DTO는 반드시 분리하는 것이 좋다.
 - Html 등 view 소스 없이 POST 요청이나 REST 테스트 시에 'Postman'을 사용하면 된다.
 	- intellij에서는 'command+n'에서 .http를 통해 테스트할 수 있다.
+- Java8이전에는 **Date**를 이용해서 날짜를 표기했다.
+	- 8버전부터는 **LocalDate, LocalDateTime**을 이용하면 되겠다.
+	- [참고링크 Naver D2 - Java의 날짜와 시간 API](https://d2.naver.com/helloworld/645609)
+- **@MappedSuperclasss :** JPA Entity 클래스들이 이 어노테이션이 달린 클래스를 상속할 경우 해당 클래스의 칼럼들을 인식할 수 있다.
+- JPA Auditing이 실행되려면 **@EnableJpaAuditing**을 설정해줘야한다.
+- HTML 문서에서 CSS, JS호출하는 위치가 다른 이유는 **페이지 로딩 속도**를 높이기 위해서이다.
+	- 최상단에서부터 실행되는데 head가 다 실행되고 body가 실행된다.
+	- js 용량이 크면 클수록 body 부분의 속도가 느려지는데 때문에 js는 body 하단에 두어 화면이 다 그려진 뒤에 호출하는 것이 좋다.
+- 데이터 등록/수정/삭제 등의 작업은 **JPA**를 통해 진행하고 조회같은 경우는 **QueryDSL** 프레임워크를 사용하는 것을 추천한다.
+	- JPA, queryDSL에 대한 자세한 내용은 (김영한님의 자바 ORM 표준 JPA 프로그래밍)[http://www.yes24.com/Product/goods/19040233]을 참고 서적이다.
 
+- AWS 인스턴스에 SSH로 접근할 시에 매번 pem키 외부 IP를 입력해야했다.
+	- 받은 pem을 ~/.ssh 폴더에 옮겨준다.
+	- chmod 600을 해준다.
+	- ~/.ssh에 config 파일을 생성 후 Host, HostName, User, IdentityFile을 지정해준다.
+	- ``` ssh 등록한Host값 ```으로 손쉽게 접근 가능하다.
+- **RDS :** AWS의 Database서비스이다. Relational Database Service
+- **CI (Continuous Intergration):** 코드 버전 관리를 하는 VCS 시스템에 PUSH가 되면 자동으로 Test, Build가 수행되고 Build 결과를 운영 서버에 배포까지 자동으로 진행되는 이 과정을 **지속적 통합**이라고 한다.
+- **CI의 4가지 규칙**
+	+ 모든 소스코드가 현재 실행되고 어느 누구든 현재의 소스를 접근할 수 있는 단일 지점을 유지할 것
+	+ 빌드 프로세스를 자동화시켜 어느 누구든 소스로부터 시스템을 빌드하는 단일 명령어를 수행할 수 있게 할 것
+	+ 테스팅을 자동화시켜서 단일 명령어를 통해서 언제든지 시스템에 대한 건전한 테스트 수트를 실행할 수 있게 할 것
+	+ 누구나 현재 실행 파일을 얻으면 지금까지 최고의 실행파일을 얻었다는 확신이 들게 할 것
+- **Travis CI :** Github에서 제공하는 무료 CI서비스이다.(=젠킨스는 설치형)
+- **배포 :** 작성한 코드를 실제서버에 반영하는 것을 배포라고 한다.
+	+ git clone 및 pull, gradle 혹은 maven을 통해 프로젝트 빌드, EC2서버에 해당 프로젝트 실행 및 재실행
+- **리눅스 명령어 nohup :** (hup = hangup)신호를 무시하도록 만드는 명령어이다.
+- **리눅스 명령어 java -jar :** 일반적으로 Java를 실행시킬 때 사용하지만, 터미널을 종료할 때 어플리케이션도 종료된다. 터미널은 종료시켜도 어플리케이션은 계속 구동될 수 있도록 nohup명령어를 사용한다.
 
 > **🚨부족한 개념, 정리가 필요한 개념들🚨**
 - 컬렉션 (Collection) 정리
@@ -58,6 +85,9 @@
 - .properties와 .yml의 차이 : 유연함의 차이(<)
 - JPA Auditing : 생성일자, 수정일자, 수정자, 생성자 자동
 - BDD (Behavior-Driven-Development) : test코드 given, when, then
+- Gradle 사용법, 동작원리, 문법확인
+- org.springframework.data.annotation.*
+- 무중단배포
 
 ---
 > <h2>2019.03.2</h2>
