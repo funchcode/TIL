@@ -4,6 +4,22 @@
 > 2. 주 단위로 얼마만큼 성장하고 있나를 확인하는 목적<br/>
 ---
 
+> <h2>2019.03.4</h2>
+> **Toy Project**
+- Gradle🏷 - Java에 정리
+> **Docker<Toy Project>**
+- 홈페이지에서 회원가입 후 설치
+> **Jenkins<Toy Project>**
+- Docker의 Kitematic에서 Jenkins 설정에서 삽질을 했다.
+	+ 의존성 버전 문제였다. 그래서 docker에 image를 jenkins/jenkins로 설치해서 해결했다.
+- 젠킨스를 설치할 때 Git Plugin과 Github Plugin이 설치된다.
+- Deploy to container Plugin은 따로 설치해주어야한다.
+> **Github<Toy Project>**
+- Webhook을 위해 repository > settings > service를 확인했는데 deprecated가 되었다.
+
+>**🚨부족한 개념, 정리가 필요한 개념들🚨**
+- Redis
+
 > <h2>2019.03.3</h2>
 > **NextStep 5장 실습**
 - 서블릿은 웹 서버의 Controller, HttpRequest, HttpResponse를 추상화해 인터페이스로 정의한 표준이다.
@@ -98,6 +114,7 @@
 - Exception의 종류와 정의
 - 자바 가변인자 문법
 - 자바 람다식
+- 데이터베이스 인덱스, 정규화, 트랜잭션
 
 ---
 > <h2>2019.03.2</h2>
