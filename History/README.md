@@ -16,6 +16,10 @@
 - Deploy to container Plugin은 따로 설치해주어야한다.
 > **Github<Toy Project>**
 - Webhook을 위해 repository > settings > service를 확인했는데 deprecated가 되었다.
+- 프로필을 눌러 Settings에 들어간다.
+	+ Developer Settings로 들어간다.
+	+ Personal Access Tokens로 들어간다.
+	+ Generate new Token을 받는다.
 
 >**🚨부족한 개념, 정리가 필요한 개념들🚨**
 - Redis
