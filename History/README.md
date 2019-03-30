@@ -9,6 +9,21 @@
 - Gradle🏷 - Java에 정리
 > **Docker<Toy Project>**
 - 홈페이지에서 회원가입 후 설치
+```
+docker images		(이미지 리스트 확인)
+docker ps    		(컨테이너 리스트 확인)
+docker rm 			(컨테이너 삭제)
+docker rmi 			(이미지 삭제)
+docker run 			(컨테이너 실행)
+docker search 		(도커허브에서 이미지 찾기)
+```
+**docker kill을 하고 나서 docker ps에서 목록이 보이지 않아 삭제된 줄 알았다**<br/>
+-```docker ps -a``` : a옵션을 주면 종료된 컨테이너 목록을 볼 수 있다.
+-```docker restart [ContainerID or name]``` : 명령어를 사용하면 이전 데이터를 갖고 실행된다.
+
+```docker inspect [container-name]``` : 해당 컨테이너의 볼륨 위치를 알 수 있다. <br>
+- Volumns : 컨테이너의 정보를 가지고 있다.
+```docker volume prune``` : 도커 볼륨을 사용하고 있는 컨테이너를 삭제해도 볼륨이 자동으로 삭제되지 않기 때문에 실행해야한다.<br/>
 > **Jenkins<Toy Project>**
 - Docker의 Kitematic에서 Jenkins 설정에서 삽질을 했다.
 	+ 의존성 버전 문제였다. 그래서 docker에 image를 jenkins/jenkins로 설치해서 해결했다.
@@ -20,6 +35,26 @@
 	+ Developer Settings로 들어간다.
 	+ Personal Access Tokens로 들어간다.
 	+ Generate new Token을 받는다.
+- Jenkins url을 설정해야한다. (= ngrok사용)
+	+ **ngrok** : 방화벽 넘어서 외부에서 로컬에 접속 가능하게 하는 터널 프로그램
+> **젠킨스와 도커 연동**
+- Github에서 push하면 Jenkins에서 빌드와 테스트를 실행하고 그 결과를 Slack에 전송한다.
+	+ 그 밖에 docker image로 build하고 docker hub에 push하는 자동화 작업도 필요하다.
+- Container에서 docker를 돌리는 방식을 ```docker in docker``` 라고 한다.
+	+ = [docker socket](https://anomie7.tistory.com/50)을 사용하는 방식.<br/>
+- Jenkins 서버로 도커 이미지를 빌드하려면 몇 가지 설정을 추가해야한다.
+	+ Docker 소켓 파일에 대한 접근권한
+	+ Docker 클라이언트와 실행권한
+```console
+docker run -p 8080:8080 -v /var/run/docker.sock:/var/run/docker.sock --name jenkins jenkins/jenkins
+```
+- 호스트 시스템의 /var/run/docker.sock과 동일한 위치에 마운트해야한다.
+- **gustavoapolinario/jenkins-docker** : 도커가 설치된 젠킨스 이미지를 통해 마운트하던가 직접 만들어야한다.[참고자료](https://medium.com/@gustavo.guss/jenkins-building-docker-image-and-sending-to-registry-64b84ea45ee9)
+
+**왜 docker in docker를 해야하는걸까 ?**
+- 컨테이너에 docker를 마운트하면 Docker Demon을 사용하여 컨테이너를 실행하고 이미지를 빌드할 수 있기 때문이다.
+**문제1: jenkins를 실행할 때 docker container를 설치해야하는데 이미 최신 jenkins를 마운트했다.**
+- volumn을 제대로 사용했더라면 문제없었을텐데 다시 시작해야하는 것 같다.
 
 >**🚨부족한 개념, 정리가 필요한 개념들🚨**
 - Redis
