@@ -1,184 +1,92 @@
-## 주말을 이용하여 Github Blog에 꼭 정리하자.
+## 2019년 4월 학습공책
 > <h3>규칙</h3>
-> 1. **BOOK** 관련 대략적인 개념 정리를 해 놓는 창고이다.<br/>
-> 2. 주 단위로 얼마만큼 성장하고 있나를 확인하는 목적<br/>
+> 1. 학습한 내용을 대략적이라도 정리하고 지나칠 지식은 메모한다.<br/>
+> 2. 부족한 개념은 정리하고 주말에 정리한다.<br/>
 ---
 
-> <h2>2019.03.4</h2>
-> **Toy Project**
-- Gradle🏷 - Java에 정리
-> **Docker<Toy Project>**
-- 홈페이지에서 회원가입 후 설치
-```
-docker images		(이미지 리스트 확인)
-docker ps    		(컨테이너 리스트 확인)
-docker rm 			(컨테이너 삭제)
-docker rmi 			(이미지 삭제)
-docker run 			(컨테이너 실행)
-docker search 		(도커허브에서 이미지 찾기)
-```
-**docker kill을 하고 나서 docker ps에서 목록이 보이지 않아 삭제된 줄 알았다**<br/>
--```docker ps -a``` : a옵션을 주면 종료된 컨테이너 목록을 볼 수 있다.
--```docker restart [ContainerID or name]``` : 명령어를 사용하면 이전 데이터를 갖고 실행된다.
+# 2019.04 - 1 👇🏾<br>
+> <h2>@토이프로젝트</h2><br>
+### **AWS(ECS: EC2 Container Service)에 대한 학습**<br>
+Docker(도커)를 이용해 서비스를 구축하려면 여러가지 고려할 사항이 많은데 **ECS**는 인프라 환경을 좀 더 편리하게 운영하고 관리할 수 있게 해준다. <br>
 
-```docker inspect [container-name]``` : 해당 컨테이너의 볼륨 위치를 알 수 있다. <br>
-- Volumns : 컨테이너의 정보를 가지고 있다.
-```docker volume prune``` : 도커 볼륨을 사용하고 있는 컨테이너를 삭제해도 볼륨이 자동으로 삭제되지 않기 때문에 실행해야한다.<br/>
-> **Jenkins<Toy Project>**
-- Docker의 Kitematic에서 Jenkins 설정에서 삽질을 했다.
-	+ 의존성 버전 문제였다. 그래서 docker에 image를 jenkins/jenkins로 설치해서 해결했다.
-- 젠킨스를 설치할 때 Git Plugin과 Github Plugin이 설치된다.
-- Deploy to container Plugin은 따로 설치해주어야한다.
-> **Github<Toy Project>**
-- Webhook을 위해 repository > settings > service를 확인했는데 deprecated가 되었다.
-- 프로필을 눌러 Settings에 들어간다.
-	+ Developer Settings로 들어간다.
-	+ Personal Access Tokens로 들어간다.
-	+ Generate new Token을 받는다.
-- Jenkins url을 설정해야한다. (= ngrok사용)
-	+ **ngrok** : 방화벽 넘어서 외부에서 로컬에 접속 가능하게 하는 터널 프로그램
-> **젠킨스와 도커 연동**
-- Github에서 push하면 Jenkins에서 빌드와 테스트를 실행하고 그 결과를 Slack에 전송한다.
-	+ 그 밖에 docker image로 build하고 docker hub에 push하는 자동화 작업도 필요하다.
-- Container에서 docker를 돌리는 방식을 ```docker in docker``` 라고 한다.
-	+ = [docker socket](https://anomie7.tistory.com/50)을 사용하는 방식.<br/>
-- Jenkins 서버로 도커 이미지를 빌드하려면 몇 가지 설정을 추가해야한다.
-	+ Docker 소켓 파일에 대한 접근권한
-	+ Docker 클라이언트와 실행권한
+<u>@"ECS의 구성요소"</u> <br>
+1. Task Definition : 컨테이너 이미지, CPU/메모리 설정, port매핑, volumn설정 같은 것들
+2. Task : Task Definition에서 정의된 대로 배포된 Container set을 Task라고 한다. ECS의 최소단위이다.
+3. Service : Task들의 Lifecycle을 관리, Cluster에 몇 개나 배포할 것인지 결정하고 고가용성의 정책을 담당한다.
+4. Container Instance : ECS는 컨테이너 배포를 EC2 인스턴스 기반에 올리도록 설계되어 있다. Task를 올리기 위해 등록된 EC2 Instance를 Container Instance라고 부른다.
+5. Cluster : Task가 배포되는 Container Instance들을 논리적인 그룹으로 묶이게 되는데, 이 단위를 Cluster라고 부른다. <br>
+
+<u>@"ELB : Elastic Load Balancing"</u> <br>
+- 들어오는 애플리케이션 트래픽을 여러가지 대상으로 자동으로 분배시키는 역할을 한다.
+- 자동 확장/축소, 강력한 보안을 갖고 있다. <br>
+
+<u>@"ECS vs Kubernetes/Docker swarm"</u><br>
+**Docker 이슈** : 대규모 컨테이너 관리를 위해 반드시 해결해야하는 문제들이 있다.
+- host container를 어떻게 배포할 것인지에 대한 스케줄링 관련 문제
+- 다른 host container에 배포된 container 사이의 통신 문제
+- 동일 Port를 사용하는 컨테이너들을 동시 수용했을 때 host 포트 맵핑 이슈<br>
+**Kubernetes/Docker swarm**
+- overlay network 구조를 추가해 해결, host간 네트워크를 논리적으로 묶어서 연결<br>
+**ECS Cluster**
+- ELB 서비스를 통해 해결
+- ELB의 밸런싱 그룹에 task들이 자동으로 들어가도록 설계되어 있다.(= service간의 통신은 ELB를 통해 통신하게 한다.)<br>
+
+<u>@"Container 특성 상 DB와 같은 stateful한 서버는 EC2나 RDS를 이용해 연계하여 사용"</u><br>
+컨테이너는 기존의 인프라 방식에 비해 생성과 소멸에 좀 더 유연한 성질이 있다.(= 언제든 삭제 될 수 있다.)<br>
+그러므로 data store가 목적인 DB는 컨테이너의 컨셉과 상반된 형태이다.<br>
+
+<u>@"ECR 추가적인 설명"</u><br>
+**어떤 서비스인가? >** Docker Container의 이미지를 저장하는 Repository 서비스이다.<br>
+기능은 Docker hub의 Repository와 동일하다.<br>
+Docker Private Repository 구축하고 관리하는 수고를 AWS에 맡기는 Managed서비스이다.<br>
+
+Container이미지를 S3에 저장되기 때문에 고가용성이 유지되고, IAM인증을 통해 Pull/Push에 대한 권한 관리가 가능하다.<br>
+
+<u>@"EC2 인스턴스 생성 후 젠킨스 설치하기"</u><br>
+1. SecurityGroup을 설정한다 (= 젠킨스를 사용하는 포트번호가 8080번이다.)
+- SSH 포트를 설정을 안해서 에러발생. EC2인스턴스에 접근하려면 SSH포트를 열어줘야한다.
+2. pem을 통해 인스턴스에 접속, yum패키지 매니저 최신으로 업데이트
+3. AWS EC2 Linux에는 자동으로 java 7이 설치되어 있다. 8버전으로 재설치.
+- 자바 9는 젠킨스와 사용못한다.
+4. yum이 어디서 jenkins를 설치해야 할 지 알 수 있도록 Jenkins repository를 추가한다.
 ```console
-docker run -p 8080:8080 -v /var/run/docker.sock:/var/run/docker.sock --name jenkins jenkins/jenkins
+sudo wget -O /etc/yum.repos.d/jenkins.repo http://pkg.jenkins-ci.org/redhat/jenkins.repo
 ```
-- 호스트 시스템의 /var/run/docker.sock과 동일한 위치에 마운트해야한다.
-- **gustavoapolinario/jenkins-docker** : 도커가 설치된 젠킨스 이미지를 통해 마운트하던가 직접 만들어야한다.[참고자료](https://medium.com/@gustavo.guss/jenkins-building-docker-image-and-sending-to-registry-64b84ea45ee9)
+5. Jenkins를 설치할 때 파일들이 신뢰할 수 있는 source로부터 제공됨을 증명하기 위해 로컬 GPG 키링에 Jenkins GPG key를 추가해준다.
+```console
+sudo rpm --import http://pkg.jenkins-ci.org/redhat/jenkins-ci.org.key
+```
+🚨궁금증# GPG key가 무엇인가?🚨
+👉🏽 사용자정의 rpm을 안전하게 배포하기 위해서 사용한다. 배포자가 패키지 서명을 하고 사용자는 공개키를 받아서(wget) 사용한다.
+6. Jenkins를 설치한다.
+```console
+sudo yum install jenkins
+```
+- 에러 : ```No more mirrors to try```
+    + 시스템에서 오래된 yum캐시 삭제 : ```yum clean all```
+    + 유효한 저장소를 나열할 수 있는가 : ```yum repolist```
+터미널에 ```Complete!```를 확인했으면 된거다.
+7. Jenkins 서버 시작.
+```console
+sudo service jenkins start
+```
+8. 8080 port가 LISTEN상태인지 확인
+```console
+netstat -na | grep 8080 
+```
 
-**왜 docker in docker를 해야하는걸까 ?**
-- 컨테이너에 docker를 마운트하면 Docker Demon을 사용하여 컨테이너를 실행하고 이미지를 빌드할 수 있기 때문이다.
-**문제1: jenkins를 실행할 때 docker container를 설치해야하는데 이미 최신 jenkins를 마운트했다.**
-- volumn을 제대로 사용했더라면 문제없었을텐데 다시 시작해야하는 것 같다.
+> 🚫 상위 내용을 그대로 적용시 **Error** 발생. 새로운 발상 필요 아래 발상 정리.
+> 1. EC2와 ECS의 차이 [ECS가 하나의 서비스인가, EC2에서 안에서 구동되는 서비스인가]
+> 2. Jenkins 속도 EC2 성능 문제인가 [EC2 인스턴스 최상급은 무엇인가]
+> 3. ECS와 docker는 분리된 서비스인가, 하나의 서비스인가
+> 4. ECS와 S3서비스의 연동과 image 저장 방법
+> 5. ECS에서 배포는 어디에서 적용되는 것인가 [blue-green deploy 구현 위치]
 
->**🚨부족한 개념, 정리가 필요한 개념들🚨**
-- Redis
+<u>@"1. EC2와 ECS의 차이"</u><br>
+AWS홈페이지를 보면 **AWS Fargate**용어가 나온다. Fargate와 EC2 중에 택하여 ECS를 사용한다.
+- Fargate : 서버 또는 클러스트를 관리할 필요없이 컨테이너를 실행할 수 있도록 지원하는 ECS를 위한 컴퓨팅 엔진이다.
+- EC2 : 자신이 관리하는 AWS EC2 인스턴스 클러스터에서 컨테이너화된 애플리케이션을 실행할 수 있다.
 
-> <h2>2019.03.3</h2>
-> **NextStep 5장 실습**
-- 서블릿은 웹 서버의 Controller, HttpRequest, HttpResponse를 추상화해 인터페이스로 정의한 표준이다.
-	- 클라이언트의 요청과 응답에 대한 표준
-- 서블릿 컨테이너는 서버가 시작할 때 서블릿 인스턴스를 생성해, 요청 URL과 서블릿 인스턴스를 연결해 놓는다.
-- """""AWS""""""
-- 설치된 톰캣버전 확인 : sudo /usr/share/tomcat8/bin/version.sh
-- """""""""""
-> **NextStep 5장 실습**
-- **익명 클래스 :** '클래스 선언 + 객체 선언' 동시에 한다(=일회용클래스). 타입으론 조상클래스 명이나 인터페이스 명을 사용한다(=Method Override).
-- **Exception :** 3가지 예외발생 방법(1. Error, 2. 체크예외, 3.RuntimeException)
-- **가변인자 :** ...을 사용해서 가변 인자 사용을 알린다.
-- **람다식 :** 핵심은 지울 수 있는 건 모두 지워서 코드를 깔끔하게 유지하자(=컴파일러 추론에 의지).
-	+ **@FunctionalInterface**는 해당 인터페이스는 함수형 인터페이스로 추상메서드를 하나만 가질 수 있다고 알려주는 것이다.
-
-> Java GC (Garbage Collection)
-- stop the world
-- GC 튜닝이란 사실상 stop the world 시간을 줄이는 것이다.
-- GC 활동 전제(가설)
-	- 대부분의 객체는 금방 접근 불가능 상태가 된다.
-	- 오래된 객체에서 젊은 객체로의 참조는 아주 적게 존재한다.
-- Young 영역 : 새롭게 생성된 객체가 존재하는 곳이다. Minor GC에 의해 처리된다(접근 불가능 상태).
-- Old 영역 : Young영역에서 살아남은 객체가 복사되는 곳이다. 크기가 Young영역보다 크다(=GC발생이 적다.). Major GC에 의해 처리된다.
-- Old영역에서 Young영역의 객체를 참조하는 경우 Minor GC는 어떻게 동작하는가.
-	- **card table**이 기록을 담고있고, Minor GC는 이 테이블을 확인하고 동작한다.
-
-> **Cookie 속성**
-- **domain :** cookie의 대상 호스트를 확장하기 위해 사용한다. 웹 브라우저가 쿠키 값을 전송할 서버의 도메인을 지정한다.
-- **path :** 웹 브라우저가 쿠키 값을 전송할 URL을 지정.
-- **max-age :** 유효기간을 설정 (초) 단위.
-- **expires :** 쿠키 유효기간 설정.
-- **secure :** SSL 통신 채널 연결 시에만 쿠키 값을 전송하도록 설정.
-- **HttpOnly :** 서버 요청이 있을 때에만 쿠키가 전송되도록 설정. JavaScript에서의 엑세스를 금지하기 위해 사용. XSS 공격에 의한 피해를 줄일 수 있다.
-- max-age, expires를 설정하지 않는 경우 브라우저 윈도우가 닫힐 때까지만 유효하다.<br/>
-
-> **Spring Boot 학습** [이동욱개발자(창천향로)님 감사합니다](https://jojoldu.tistory.com/)
-
-- **@RestController :** 하나의 URI는 하나의 고유한 리소스를 대표하도록 설계하는 개념이다. REST방식으로 제공되는 외부연결을 Restfull하다고 표현한다.
-	- **spring3**에서는 @ResponseBody
-	- **spring4**에서는 @RestController
-	- jsp 등의 뷰를 생성하지 않고 데이터만 반환한다.
-- 스프링에서는 JSON 데이터를 처리하기 위해 **jackson**라이브러리가 필요하다.
-- **@GeneratedValue :** MySQL의 autoIncrement와 같다.
-- **@Builder 패턴:** AccessLevel에서 protected로 생성자 생성에 제한을 건 상황, setter가 필요하지만 무분별한 사용이 우려될때 사용, public 생성자를 추가해서는 받는 param의 위치에 대한 정확한 정보 확인이 어렵다거나 실수할 수 있고 데이터를 잘 못 입력했을 때 에러를 알 수 없으므로 사용한다.
-	- **Lombok**에 해당한다.
-- Bean을 주입하는 세가지 방법.
-	- 1. **@Autowired** 2. **setter** 3. **생성자**
-- Entity Class와 Controller에서 사용할 DTO는 반드시 분리하는 것이 좋다.
-- Html 등 view 소스 없이 POST 요청이나 REST 테스트 시에 'Postman'을 사용하면 된다.
-	- intellij에서는 'command+n'에서 .http를 통해 테스트할 수 있다.
-- Java8이전에는 **Date**를 이용해서 날짜를 표기했다.
-	- 8버전부터는 **LocalDate, LocalDateTime**을 이용하면 되겠다.
-	- [참고링크 Naver D2 - Java의 날짜와 시간 API](https://d2.naver.com/helloworld/645609)
-- **@MappedSuperclasss :** JPA Entity 클래스들이 이 어노테이션이 달린 클래스를 상속할 경우 해당 클래스의 칼럼들을 인식할 수 있다.
-- JPA Auditing이 실행되려면 **@EnableJpaAuditing**을 설정해줘야한다.
-- HTML 문서에서 CSS, JS호출하는 위치가 다른 이유는 **페이지 로딩 속도**를 높이기 위해서이다.
-	- 최상단에서부터 실행되는데 head가 다 실행되고 body가 실행된다.
-	- js 용량이 크면 클수록 body 부분의 속도가 느려지는데 때문에 js는 body 하단에 두어 화면이 다 그려진 뒤에 호출하는 것이 좋다.
-- 데이터 등록/수정/삭제 등의 작업은 **JPA**를 통해 진행하고 조회같은 경우는 **QueryDSL** 프레임워크를 사용하는 것을 추천한다.
-	- JPA, queryDSL에 대한 자세한 내용은 (김영한님의 자바 ORM 표준 JPA 프로그래밍)[http://www.yes24.com/Product/goods/19040233]을 참고 서적이다.
-
-- AWS 인스턴스에 SSH로 접근할 시에 매번 pem키 외부 IP를 입력해야했다.
-	- 받은 pem을 ~/.ssh 폴더에 옮겨준다.
-	- chmod 600을 해준다.
-	- ~/.ssh에 config 파일을 생성 후 Host, HostName, User, IdentityFile을 지정해준다.
-	- ``` ssh 등록한Host값 ```으로 손쉽게 접근 가능하다.
-- **RDS :** AWS의 Database서비스이다. Relational Database Service
-- **CI (Continuous Intergration):** 코드 버전 관리를 하는 VCS 시스템에 PUSH가 되면 자동으로 Test, Build가 수행되고 Build 결과를 운영 서버에 배포까지 자동으로 진행되는 이 과정을 **지속적 통합**이라고 한다.
-- **CI의 4가지 규칙**
-	+ 모든 소스코드가 현재 실행되고 어느 누구든 현재의 소스를 접근할 수 있는 단일 지점을 유지할 것
-	+ 빌드 프로세스를 자동화시켜 어느 누구든 소스로부터 시스템을 빌드하는 단일 명령어를 수행할 수 있게 할 것
-	+ 테스팅을 자동화시켜서 단일 명령어를 통해서 언제든지 시스템에 대한 건전한 테스트 수트를 실행할 수 있게 할 것
-	+ 누구나 현재 실행 파일을 얻으면 지금까지 최고의 실행파일을 얻었다는 확신이 들게 할 것
-- **Travis CI :** Github에서 제공하는 무료 CI서비스이다.(=젠킨스는 설치형)
-- **배포 :** 작성한 코드를 실제서버에 반영하는 것을 배포라고 한다.
-	+ git clone 및 pull, gradle 혹은 maven을 통해 프로젝트 빌드, EC2서버에 해당 프로젝트 실행 및 재실행
-- **리눅스 명령어 nohup :** (hup = hangup)신호를 무시하도록 만드는 명령어이다.
-- **리눅스 명령어 java -jar :** 일반적으로 Java를 실행시킬 때 사용하지만, 터미널을 종료할 때 어플리케이션도 종료된다. 터미널은 종료시켜도 어플리케이션은 계속 구동될 수 있도록 nohup명령어를 사용한다.
-
-> **🚨부족한 개념, 정리가 필요한 개념들🚨**
-- 컬렉션 (Collection) 정리
-- 스트림 (Stream<E>) 정리
-- 반복자 (Iterator) 정리
-- 쉘 스크립트 정리
-- .properties와 .yml의 차이 : 유연함의 차이(<)
-- JPA Auditing : 생성일자, 수정일자, 수정자, 생성자 자동
-- BDD (Behavior-Driven-Development) : test코드 given, when, then
-- Gradle 사용법, 동작원리, 문법확인
-- org.springframework.data.annotation.*
-- 무중단배포
-- 익명클래스
-- Exception의 종류와 정의
-- 자바 가변인자 문법
-- 자바 람다식
-- 데이터베이스 인덱스, 정규화, 트랜잭션
 
 ---
-> <h2>2019.03.2</h2>
-> NextStep 3장 실습
-- 새로운 무엇인가를 학습할 때 내가 이해한 수준까지 직접 라이브러리 또는 프레임워크를 구현해봄으로써 학습에 대한 깊이를 더해가는 방식을 추천.
-- **애자일 프로세스**
-	- Agile : 기민한, 좋은 것을 빠르고 낭비없게 만드는 것.
-	- 아무런 계획이 없는 개발 방법과 계획이 지나치게 많은 개발 방법들 사이에서 타협점을 찾고자 하는 방법론이다.
-	- 계획을 통해서 주도해 나갔던 과거의 방법론과는 다르게 앞을 예측하지 않고, 일정한 주기를 끊임없이 프로토 타입을 만들어내며 그때 그때 필요한 요구를 더하고 수정하여 하나의 커다란 소프트웨어를 개발해 나가는 adaptive style이라고 할 수 있다.
-	- 각 주제에 대한 깊이는 깊지 않을 수 있지만 프론트엔드부터 백엔드까지 기능을 구현한 후 개발 서버(또는 실 서버)에 배포하는 경험까지를 한 반복주기로 생각하고 학습할 수 있다.
-	- 이점1 : 소프트웨어 전체과정을 빠르게 경험함으로써 현재 상태에서 자신이 모르고 있는 부분이 무엇인지, 부족한 점이 무엇인지 빠르게 파악할 수 있다.
-	- 이점2 : 자신이 가장 자신없는 부분과 흥미를 가진 부분을 캐치할 수 있다.
-- 프로그래밍을 할 때 좋은 습관 중의 하나는 프로그래밍 실행 중 발생하는 로그 메시지를 주의 깊게 살펴보는 것이다.
-- 설계는 한 번의 작업으로 끝내야 하는 것이 아니라 애플리케이션을 개발하고 배포해 운영하는 동안 끊임없이 진행해야 하는 것이 설계이다.
-- 자신이 구현한 코드에 대해 지속적으로 의도적인 리팩토링을 할 때 한 단계 성장한다.
 
----
-> 부족한 개념, 다시 정리가 필요한 개념들
-- XSS 취약점
-- preventDefault
-- 애자일 소프트웨어 개발
-- SSH
-- 공개키, 비공개키
-- Apache
-- apt-get, wget
-- Heap 영역
-- Class Loader(JVM)
-- GC
