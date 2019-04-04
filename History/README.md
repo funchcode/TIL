@@ -57,7 +57,7 @@ sudo wget -O /etc/yum.repos.d/jenkins.repo http://pkg.jenkins-ci.org/redhat/jenk
 sudo rpm --import http://pkg.jenkins-ci.org/redhat/jenkins-ci.org.key
 ```
 🚨궁금증# GPG key가 무엇인가?🚨
-👉🏽 사용자정의 rpm을 안전하게 배포하기 위해서 사용한다. 배포자가 패키지 서명을 하고 사용자는 공개키를 받아서(wget) 사용한다.
+👉🏽 사용자정의 rpm을 안전하게 배포하기 위해서 사용한다. 배포자가 패키지 서명을 하고 사용자는 공개키를 받아서(wget) 사용한다.<br>
 6. Jenkins를 설치한다.
 ```console
 sudo yum install jenkins
@@ -87,6 +87,24 @@ AWS홈페이지를 보면 **AWS Fargate**용어가 나온다. Fargate와 EC2 중
 - Fargate : 서버 또는 클러스트를 관리할 필요없이 컨테이너를 실행할 수 있도록 지원하는 ECS를 위한 컴퓨팅 엔진이다.
 - EC2 : 자신이 관리하는 AWS EC2 인스턴스 클러스터에서 컨테이너화된 애플리케이션을 실행할 수 있다.
 
+<u>@"EC2에 Jenkins 설치"</u><br>
+> 🚫 에러발생
+> Failed to connect to repository : Error performing command: git ls-remote -h [url] HEAD
+> > EC2에 git을 설치해서 해결했다. 
+```sudo yum install git```<br>
+
+<u>@"흐름 다시정리"</u><br>
+> Git(master/develop) - Jenkins(-Slack) - AWS S3 - AWS Deploy - AWS EC2<br>
+
+AWS와 도커를 함께 사용하려면 ECS를 사용해야하는데 내가 하는 프로젝트의 규모가 ECS를 모두 누려보기에는 적합하지 않다 판단하여 도커를 사용하지 않는 쪽으로 방향을 잡음.<br>
+
+Elastic IP를 EC2에 적용하지 않아 요금이 청구되었음. 프리티어 만료된줄 알았음.<br>
+
+> <h2>@리눅스</h2><br>
+### **리눅스 완벽 입문서 대한 학습**<br>
+리눅스 명령어는 쉘에 내장되어 있다.(=쉘 함수이다.) <br>
+```man``` 명령어에 섹션번호가 존재한다.(=목차) <br>
+세미콜론으로 각 명령어를 구분해서 한 줄에 표현가능하다. <br>
 
 ---
 
