@@ -96,9 +96,18 @@ AWS홈페이지를 보면 **AWS Fargate**용어가 나온다. Fargate와 EC2 중
 <u>@"흐름 다시정리"</u><br>
 > Git(master/develop) - Jenkins(-Slack) - AWS S3 - AWS Deploy - AWS EC2<br>
 
+
+EC2인스턴스에서 Jenkins(default port:8080) 변경하는 방법. <br>
+
+```sudo vim /etc/sysconfig/jenkins```에서 JENKINS_PORT를 변경하고 재시작<br>
+
 AWS와 도커를 함께 사용하려면 ECS를 사용해야하는데 내가 하는 프로젝트의 규모가 ECS를 모두 누려보기에는 적합하지 않다 판단하여 도커를 사용하지 않는 쪽으로 방향을 잡음.<br>
 
 Elastic IP를 EC2에 적용하지 않아 요금이 청구되었음. 프리티어 만료된줄 알았음.<br>
+> 🚫 에러발생
+> Execution failed for task ':compileJava'. Could not find tools.jar.<br>
+```sudo yum install java-1.8.0-openjdk-devel```을 설치해서 해결<br>
+**/usr/lib/jvm/java-1.8.0----------/lib/tools.jar** 가 존재하지 않았음.<br>
 
 > <h2>@리눅스</h2><br>
 ### **리눅스 완벽 입문서 대한 학습**<br>
