@@ -99,7 +99,10 @@ AWS홈페이지를 보면 **AWS Fargate**용어가 나온다. Fargate와 EC2 중
 
 EC2인스턴스에서 Jenkins(default port:8080) 변경하는 방법. <br>
 
-```sudo vim /etc/sysconfig/jenkins```에서 JENKINS_PORT를 변경하고 재시작<br>
+```
+sudo vim /etc/sysconfig/jenkins
+```
+에서 JENKINS_PORT를 변경하고 재시작<br>
 
 AWS와 도커를 함께 사용하려면 ECS를 사용해야하는데 내가 하는 프로젝트의 규모가 ECS를 모두 누려보기에는 적합하지 않다 판단하여 도커를 사용하지 않는 쪽으로 방향을 잡음.<br>
 
@@ -109,11 +112,54 @@ Elastic IP를 EC2에 적용하지 않아 요금이 청구되었음. 프리티어
 ```sudo yum install java-1.8.0-openjdk-devel```을 설치해서 해결<br>
 **/usr/lib/jvm/java-1.8.0----------/lib/tools.jar** 가 존재하지 않았음.<br>
 
-> <h2>@리눅스</h2><br>
+> <h2>@리눅스</h2>
+
 ### **리눅스 완벽 입문서 대한 학습**<br>
 리눅스 명령어는 쉘에 내장되어 있다.(=쉘 함수이다.) <br>
-```man``` 명령어에 섹션번호가 존재한다.(=목차) <br>
+```
+man
+```
+명령어에 섹션번호가 존재한다.(=목차) <br>
 세미콜론으로 각 명령어를 구분해서 한 줄에 표현가능하다. <br>
 
 ---
+# 2019.04 - 2 👇🏾<br>
+> <h2>@토이프로젝트</h2>
 
+### **'tutorial' 브랜치로 스프링부트 튜토리얼 시작**<br>
+@"SpringBoot - Actuator"
+Actuator : 작동기, Springboot Application 상태확인이 가능케해준다.
+
+@"@RequestBody"
+HTTP 요청 Body를 자바 객체로 전달 받을 수 있다.
+
+@"@ResponseBody"
+자동으로 JSON으로 직렬화한다.
+
+@"@RestController"
+사용 시에 리턴 값에 자동으로 @ResponseBody가 붙는다.
+
+@".gitignore 파일"
+커밋대상에서 제외시켜준다. 무시목록을 설정하는 개념.
+
+@"Lombok"
+생성자 자동 생성 가능 (매개변수에 따라 이름이 다르다.)
+
+@"@GeneratedValue"
+autoIncrement
+
+@"@Builder"
+파라미터 순서 필요없고 명시적으로 값을 추가하기 때문에 가독성에 좋고, 리팩토링에 유연하다.
+
+- Entity 클래스 값 변경 필요시 Setter가 아닌 메서드를 통해 변경시키도록 해야한다.
+- ibatis/Mybatis = DAO
+- JPA = Repository
+
+@"import static"
+정적 메소드를 더욱 쉽게 사용가능하게 한다.
+
+@"BDD"
+: Behaviour-Driven-Development
+given: 환경구축, when: 행위선언, then: 결과검증
+
+- Entity(Core한)와 DTO(VIEW)의 역할 분리 확실하게 해야한다.
