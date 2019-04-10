@@ -127,39 +127,39 @@ man
 > <h2>@토이프로젝트</h2>
 
 ### **'tutorial' 브랜치로 스프링부트 튜토리얼 시작**<br>
-@"SpringBoot - Actuator"
-Actuator : 작동기, Springboot Application 상태확인이 가능케해준다.
+@"SpringBoot - Actuator"<br>
+Actuator : 작동기, Springboot Application 상태확인이 가능케해준다.<br>
 
-@"@RequestBody"
-HTTP 요청 Body를 자바 객체로 전달 받을 수 있다.
+@"@RequestBody"<br>
+HTTP 요청 Body를 자바 객체로 전달 받을 수 있다.<br>
 
-@"@ResponseBody"
-자동으로 JSON으로 직렬화한다.
+@"@ResponseBody"<br>
+자동으로 JSON으로 직렬화한다.<br>
 
-@"@RestController"
-사용 시에 리턴 값에 자동으로 @ResponseBody가 붙는다.
+@"@RestController"<br>
+사용 시에 리턴 값에 자동으로 @ResponseBody가 붙는다.<br>
 
-@".gitignore 파일"
-커밋대상에서 제외시켜준다. 무시목록을 설정하는 개념.
+@".gitignore 파일"<br>
+커밋대상에서 제외시켜준다. 무시목록을 설정하는 개념.<br>
 
-@"Lombok"
-생성자 자동 생성 가능 (매개변수에 따라 이름이 다르다.)
+@"Lombok"<br>
+생성자 자동 생성 가능 (매개변수에 따라 이름이 다르다.)<br>
 
-@"@GeneratedValue"
-autoIncrement
+@"@GeneratedValue"<br>
+autoIncrement<br>
 
-@"@Builder"
-파라미터 순서 필요없고 명시적으로 값을 추가하기 때문에 가독성에 좋고, 리팩토링에 유연하다.
+@"@Builder"<br>
+파라미터 순서 필요없고 명시적으로 값을 추가하기 때문에 가독성에 좋고, 리팩토링에 유연하다.<br>
 
-- Entity 클래스 값 변경 필요시 Setter가 아닌 메서드를 통해 변경시키도록 해야한다.
-- ibatis/Mybatis = DAO
-- JPA = Repository
+- Entity 클래스 값 변경 필요시 Setter가 아닌 메서드를 통해 변경시키도록 해야한다.<br>
+- ibatis/Mybatis = DAO<br>
+- JPA = Repository<br>
 
-@"import static"
-정적 메소드를 더욱 쉽게 사용가능하게 한다.
+@"import static"<br>
+정적 메소드를 더욱 쉽게 사용가능하게 한다.<br>
 
-@"BDD"
-: Behaviour-Driven-Development
-given: 환경구축, when: 행위선언, then: 결과검증
+@"BDD"<br>
+: Behaviour-Driven-Development<br>
+given: 환경구축, when: 행위선언, then: 결과검증<br>
 
-- Entity(Core한)와 DTO(VIEW)의 역할 분리 확실하게 해야한다.
+- Entity(Core한)와 DTO(VIEW)의 역할 분리 확실하게 해야한다.<br>
