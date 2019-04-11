@@ -163,3 +163,15 @@ autoIncrement<br>
 given: 환경구축, when: 행위선언, then: 결과검증<br>
 
 - Entity(Core한)와 DTO(VIEW)의 역할 분리 확실하게 해야한다.<br>
+
+@"Handlebars"<br>
+의존성 주입 덕에 문자열 반환 시 앞과 뒤에 문자열을 자동으로 추가해준다.<br>
+
+@"JS에서 변수에 함수"<br>
+Scope관리와 의존성 관리를 용이하기 위해 사용한다.<br>
+
+- 데이터의 수정/삭제/등록의 경우 JPA를 이용하고 조회와 같은 경우 querydsl을 이용한다.
+
+@"Travis / AWS Codedeploy와 Jenkins"<br>
+Travis와 AWS Codedeploy같은 경우 설치형이 아니고 Jenkins는 설치형이다.<br>
+설치형이 아닌 경우 .yml파일로 관리해야한다. 설치형은 플러그인을 활용하면 된다.<br>
