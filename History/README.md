@@ -175,3 +175,14 @@ Scope관리와 의존성 관리를 용이하기 위해 사용한다.<br>
 @"Travis / AWS Codedeploy와 Jenkins"<br>
 Travis와 AWS Codedeploy같은 경우 설치형이 아니고 Jenkins는 설치형이다.<br>
 설치형이 아닌 경우 .yml파일로 관리해야한다. 설치형은 플러그인을 활용하면 된다.<br>
+
+@"Git 특정 branch만 클론하는 방법"
+``` git clone -b [브랜치명] --single-branch [저장소URL] ```
+
+> 🚫 에러발생 <br>
+> MariaDB 세팅 중 Illegal mix of collations (latin1_swedish_ci,IMPLICIT) and (utf8_general_ci,COERCIBLE) for operation '=' 오류 <br>
+
+```console
+ALTER DATABASE [database] CHARACTER SET utf8 COLLATE utf8_general_ci;
+ALTER TABLE [table] CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
+```
