@@ -186,3 +186,65 @@ Travis와 AWS Codedeploy같은 경우 설치형이 아니고 Jenkins는 설치�
 ALTER DATABASE [database] CHARACTER SET utf8 COLLATE utf8_general_ci;
 ALTER TABLE [table] CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
 ```
+
+---
+# 2019.04 - 3 👇🏾 <br>
+### DataBase MariaDB 정리
+**RDB(Relational DataBase) :**<br>
+특징1) 관계형 데이터 모델의 데이터베이스이다.<br>
+특징2) 2차원 테이블로 표현가능하다.  <br>
+특징3) 확장이 용이하고 SQL(Structed Query Language)를 사용한다. <br>
+특징4) 트랜잭션과 ACID를 지원한다.<br>
+
+**ERD(Entity Relationship Diagram) :** <br>
+테이터와 데이터의 관계를 표식한다. 나는 ERDCloud를 사용했다. <br>
+방법1) Logical 직관적으로 표기한다.[한글로 칼럼들을 표기] <br>
+방법2) Physical 내용 그 자체를 모두 표기한다. <br>
+
+**Type :** <br>
+: TINYINT : 매우작은 정수 1byte <br>
+: SMALLINT : 작은 정수 2byte <br>
+: MEDIUMINT : 3byte <br>
+: INT : 4byte <br>
+: BIGINT : 8byte <br>
+: DOUBLE : 8byte <br>
+
+**DECIMAL TYPE :** <br>
+DECIMAL은 숫자데이터이지만 내부적으로 String으로 저장한다. <br>
+DECIMAL(B,F)인데 F가 0일 경우 소수점 이하는 저장되지 않는다. <br>
+동작시엔 CHAR 형태로 동작한다. <br>
+
+**CHAR vs VARCHAR :** <br>
+CHAR은 고정형, VARCHAR은 가변형이다. 즉 용량을 가변적으로 처리한다. <br>
+VARCHAR는 가변형인데 잘라서 저장한다. 즉 검색이 필요한 경우 복잡하다. <br>
+칼럼의 최대 길이가 정확히 정해진 경우 CHAR 타입을 사용하여 검색 시 효율을 높일 수 있다. <br>
+
+**VARCHAR vs TINYTEXT :** <br>
+공통점으로 둘 다 최대길이가 255이다. <br>
+차이점은 최대길이를 설정할 수 있느냐없느냐인데 최대길이를 지정해서 제한을 줄 수 있다. <br>
+
+**TEXT vs BLOB :** <br>
+TEXT는 문자를 저장하고 BLOB는 데이터를 저장한다(파일이나 이미지). <br>
+공통점으로 큰 데이터를 저장한다. <br>
+
+**ENUM vs SET :** <br>
+둘 다 열거형 데이터를 저장하는데 쓰인다. <br>
+ENUM은 데이터 1개를 뽑아내는 경우이고 SET은 Bit연산이 가능해서 여러개 선택 가능하고 비트연산이 가능하다. <br>
+ENUM은 저장하는 데이터와 표현하는 데이터가 다르다. <br>
+
+---
+### SPRING, Lombok, JPA 정리
+
+**WhatIsThis**🚨 <br>
+- ACID(원자성,일관성,고립성,지속성) 좀 더 세부적으로 찾기
+
+
+
+
+
+
+
+
+
+
+
