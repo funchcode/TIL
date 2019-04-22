@@ -233,10 +233,87 @@ ENUM은 데이터 1개를 뽑아내는 경우이고 SET은 Bit연산이 가능�
 ENUM은 저장하는 데이터와 표현하는 데이터가 다르다. <br>
 
 ---
-### SPRING, Lombok, JPA 정리
+### Interview 준비
+**web.xml :**<br>
+Deploy할 때 Servlet의 정보를 설정한다. ```<servlet-mapping>```은 url을 서블릿에 연결 <br>
 
-**WhatIsThis**🚨 <br>
+**DispatcherServlet :**<br>
+SpringContainer를 생성해서 Controller life cycle을 관리한다. <br>
+클라이언트의 요청을 처음으로 받는 서블릿인데 클라이언트의 요청을 controller에 보내는 역할을 한다. <br>
+
+**HandlerMapping :**<br>
+어떤 url이 받을지 판단 후에 ViewResolver가 prefix-suffix를 적용한다.
+
+**ContextLoader :**<br>
+Controller가 공유하는 Bean들을 포함하는 Spring Container를 생성한다. 생성한 Bean을 참조할 수 있게 해준다. <br>
+
+**annotation-driven(servlet-context) :**<br>
+Annotation을 활성화하겠다. <br>
+
+**context: component-scan base-package :**<br>
+해당 패키지를 스캔하여 Annotation이 달린 것을 bean으로 생성하여 Container에 담는다. <br>
+
+**FileUpload :**<br>
+common-fileupload를 메이븐에 추가하고 springframework.multipart.support.StandardServletMultipartResolver를 추가한다. <br>
+
+**Spring-Security :**<br>
+Spring 기반의 어플리케이션의 보안 즉 인증과 권한을 담당하는 프레임워크이다. <br>
+filter 기반으로 동작하기 때문에 Spring MVC와 분리되어 관리 및 동작한다. <br>
+1. 접근주체(Principle) : 보호된 대상에 접근하는 주체를 말한다.
+2. 인증(Authentication) : 현재 유저가 누구인지 확인한다.
+3. 인가(Authorize) : 현재 유저가 접근할 수 있는 권한이 있는지 검사한다.
+4. 권한 : 인증된 주체가 애플리케이션의 동작을 수행할 수 있도록 허락되어 있는지 결정한다.
+
+1. 유저가 로그인 시도
+2. DB에 있는 유저이면 UserDetails로 꺼내서 Session을 생성한다.
+3. 세션저장소인 SecurityContextHolder에 저장된다.
+4. 유저에게 SessionID와 함께 응답한다.
+5. 이후 요청 시 JSSESSIONID를 확인하여 Authentication을 준다.
+
+모든 접근 주체는 Authentication을 생성한다. SecurityContext에 보관되고 사용된다. <br>
+
+사용법 :
+- 의존성을 추가한다.
+- web.xml에 SpringSecurityFilterChain을 등록한다.
+    + HttpSessionEventPublisher : 동시 로그인을 제한한다.
+    + DelegatingFilterProxy : 모든 요청은 이 프록시 필터를 거친다. 인증/인가를 수행한다.
+
+나는 UserDetailsService를 상속받아 user객체를 가져와 반환하는 클래스를 만들었고 AuthenticationSuccessHandler와 AccessDeniedHandler를 상속받아서 구현했다. <br>
+PasswordEncoding으로는 BcryptPasswordEncoding을 사용했다. <br>
+@PreAuthorize를 사용하여 권한 설정을 했다. 이 어노테이션은 함수를 실행하기 전에 권한을 검사하는 역할을 한다. <br>
+isAuthenticated() : 현재 사용자가 익명이 아니다. <br>
+isRememberme(), hasRole(""), hasAnyRole("","") <br>
+@PostAuthorize는 함수를 실행하고 응답을 하기 직전에 권한을 검사하는 어노테이션이다. <br>
+파라미터에 접근할 수 있는 접두문자로 "#"이 있다. <br>
+
+**HikariCP :**<br>
+pom.xml 설정, properties 설정, default JDBC Pool <br>
+
+**Mybatis :**<br>
+마이바티스는 JDBC로 처리하는 상당부분의 코드와 파라미터 설정 및 결과 매핑을 대신해준다. <br>
+VO에 List 타입이 있고 Mybatis를 사용하기 위해 mapper.xml에 resultMap을 생성하고 collection을 이용하여 리턴을 만들었다. <br>
+
+**MediaType.APPLICATION_OCTET_SPREAM_VALUE :**<br>
+MediaType은 전송하는 데이터 타입이고 그 뒤는 파일 내용 전송을 의미한다. <br>
+
+**ISO-8859-1 Encoding :**<br>
+아스키 코드는 7비트 인코딩이고 8번째 비트를 활용해서 만든 확장 인코딩이다. HTML 문서의 기본 인코딩이다. <br>
+
+**log4j :**<br>
+오픈소스이다. 속도에 최적화되어 있다. <br>
+FATAL > ERROR > WARN > INFO > DEBUG > TRACE <br>
+
+**CSRF 공격 :**<br>
+웹 어플리케이션의 취약점 중 하나로 인터넷 사용자가 자신의 의지와 무관하게 공격자가 의도한 행위를 특정 웹 사이트에 요청하게 만드는 공격 <br>
+
+**CSRF TOKEN :**<br>
+Spring에서 ```<input type hidden name={_csrf.parameterName} value={_csrf.token}>```을 사용한다. <br>
+사용하지 않으면 403 접근 권한 오류와 springsecurity의 forbidden page로 이동한다. <br>
+사용자의 세션에 임의의 난수를 저장하고 사용자의 요청마다 해당 난수 값을 포함시켜 전송하고 요청받을 때 세션에 저장된 Token값과 요청 파라미터에 전달되는 토큰 값이 일치하는 지 검증한다. <br>
+
+🚨**WhatIsThis**🚨 <br>
 - ACID(원자성,일관성,고립성,지속성) 좀 더 세부적으로 찾기
+- SPRING, Lombok, JPA 정리
 
 
 
