@@ -231,8 +231,9 @@ TEXT는 문자를 저장하고 BLOB는 데이터를 저장한다(파일이나 �
 둘 다 열거형 데이터를 저장하는데 쓰인다. <br>
 ENUM은 데이터 1개를 뽑아내는 경우이고 SET은 Bit연산이 가능해서 여러개 선택 가능하고 비트연산이 가능하다. <br>
 ENUM은 저장하는 데이터와 표현하는 데이터가 다르다. <br>
-
+s
 ---
+# 2019.04 - 3 👇🏾 <br>
 ### Interview 준비
 **web.xml :**<br>
 Deploy할 때 Servlet의 정보를 설정한다. ```<servlet-mapping>```은 url을 서블릿에 연결 <br>
@@ -310,6 +311,77 @@ FATAL > ERROR > WARN > INFO > DEBUG > TRACE <br>
 Spring에서 ```<input type hidden name={_csrf.parameterName} value={_csrf.token}>```을 사용한다. <br>
 사용하지 않으면 403 접근 권한 오류와 springsecurity의 forbidden page로 이동한다. <br>
 사용자의 세션에 임의의 난수를 저장하고 사용자의 요청마다 해당 난수 값을 포함시켜 전송하고 요청받을 때 세션에 저장된 Token값과 요청 파라미터에 전달되는 토큰 값이 일치하는 지 검증한다. <br>
+
+**Google VISION API :**<br>
+머신러닝 기술을 이용한 API이다. <br>
+사물 / 로고 / 텍스트 / 랜드마크 / 얼굴탐지 / 유사이미지검색 / 불건전컨텐츠감지 의 기능을 갖고 있다. <br>
+사용시에 key가 필요하다. (비공개키를 JSON으로 받을 수 있다.) <br>
+boundingPoly로 사람의 얼굴을 감지했다. <br>
+
+**Node.js :**<br>
+가장 큰 특징으로 JavaScript 언어를 사용하여 백/프론트 엔드 영역을 모두 사용할 수 있게 되었다. <br>
+크롬 V8 엔진을 기반으로 비동기 IO를 지원한다. <br>
+단점으로는 싱글스레드로 처리되기 때문에 하나의 작업 시간이 길어지면 전체 성능이 낮아진다. <br>
+또한, 가독성이 좋지 않기 때문에 유지보수가 어렵고 실행해야 에러를 알 수 있다.(컴파일이 없다) <br>
+
+**Express :**<br>
+Node.js를 위한 빠르고 간편한 웹 프레임워크이다. <br>
+http와 connect 컴포넌트 기반으로 하는 웹 프레임워크이다. <br>
+
+**SocketIO :**<br>
+실시간으로 상호작용하는 웹 서비스를 만드는 기술인 웹 소켓을 쉽게 사용할 수 있게 하는 모듈이다. <br>
+emit()으로 전달하고 on()으로 전달 받는다. <br>
+클라이언트와 서버 간의 양방향 통신을 지원하는 특징이 있다. <br>
+클라이언트에서 io()시에 io.on('connection')가 되고 io.on('disconnection')시 로그아웃을 의미한다. <br>
+특정 소켓을 제외한 모든 소켓에 메세지를 전달하기 위해서는 broadcast를 사용하면 된다. <br>
+특정 소켓에만 메세지를 전달하기 위해 to()를 사용하면 된다. <br>
+
+**fs Module :**<br>
+Sync가 붙은 것은 동기적이라는 의미이다. Sync가 붙으면 해당 작업이 끝아야 다른 작업을 할 수 있다. <br>
+예외 발생 원인으로는 권한, 파일 존재여부, 용량 초과 등이 있을 수 있다. <br>
+예외 처리하는 방법 :
+1. 동기적 : try ~ catch구문을 사용하여 예외를 처리한다.
+2. 비동기적 : callback함수의 매개변수 err에 전달된다.
+
+**Firebase :**<br>
+NoSQL 즉 데이터베이스이다. <br>
+key-value의 형식이고 JSON 방식으로 데이터가 저장되고 관리된다. <br>
+나는 실시간 동기화를 지원하는 실시간데이터베이스를 사용했다. firebase.database() <br>
+내가 만든 테이블 :
+1. 메세지 테이블
+2. 읽지 않음 카운트 테이블
+3. 채팅방 테이블
+4. 유저 테이블
+5. 유저가 가진 방 테이블
+
+주로 만들어진 방을 기준으로 전체 테이블이 상호작용하도록 설계했었다. <br>
+
+**Promise 기법 :**<br>
+자바스크립트 비동기 처리에 사용되는 객체이다. <br>
+```
+new Promise()   resolve()   then()
+```
+Promise 기법에는 중요한 3가지의 상태가 존재한다. <br>
+1. Pending(대기) : 비동기 로직이 아직 처리안된 상태를 말한다.
+2. Fulfilled : 비동기처리가 완료되어 프로미스가 결과값을 반환함을 말한다.
+3. Rejected : 비동기처리가 실패이거나 오류발생을 말한다.
+
+new Promise()가 Pending 상태 <br>
+resolve()가 Fulfilled상태 then()을 사용하면 처리 결과를 받을 수 있다. <br>
+reject()가 Rejected상태이고 실패처리 결과 값은 then.catch()로 받을 수 있다. <br>
+
+예외처리 방법 :
+1. then().catch()로 분기를 이용하여 예외처리를 하는 방법
+2. then(handleSuccess, handleError)의 두번째 인자를 사용하여 예외처리를 하는 방법
+
+**EXIF :**<br>
+image, thumbnail, exif, gps 등의 사진 속에 담긴 데이터를 받을 수 있다. <br>
+나는 EXIF gps 데이터를 추출하여 GoogleMaps에 데이터를 활용하였는데 모바일로 사진을 촬영시에 gps가 켜지지 않은 상태에서는 gps 데이터가 존재하지 않았다. <br>
+
+**NPM :**<br>
+node packaged manager 이다. <br>
+모듈의 의존성을 JSON을 사용하여 한꺼번에 관리할 수 있다. <br>
+"scripts"는 run을 통해서 실행할 것들을 의미하고 "dependencies"는 설치할 모듈들을 의미한다. <br>
 
 🚨**WhatIsThis**🚨 <br>
 - ACID(원자성,일관성,고립성,지속성) 좀 더 세부적으로 찾기
