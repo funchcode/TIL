@@ -1,4 +1,12 @@
 ## "목차" <br>
+1. @RunWith()
+2. @ContentConfiguration()
+3. @Builder
+4. @NotNull
+5. @Column(nallable=false)
+6. @GeneratedValue(속성)
+7. @EntityListeners
+8. @MappedSuperclass
 
 ---
 ## @RunWith() <br>
