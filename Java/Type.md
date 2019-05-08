@@ -72,6 +72,6 @@ String도 reference Type이지만 다른 reference Type과 다른 점은 JVM에�
 String은 immutable Class이므로 setter가 없고 재할당하게 되면 새로운 메모리 참조주소를 갖게 된다. <br>
 
 ---
-## ⭐️ 참조자료 (감사합니다 :)) ⭐️ <br>
+### ⭐️ 참조자료 (감사합니다 :)) ⭐️ <br>
 
 [이경환님의 JAVA Primitive, Reference Type 그리고 String](https://againsee.com/2018/06/15/java-datatype/) <br>
