@@ -1,10 +1,21 @@
-## 주말을 이용하여 Github Blog에 꼭 정리하자.
-> <h3>규칙</h3>
-> 1. **Algorithm** 관련 대략적인 개념 정리를 해 놓는 창고이다.<br/>
-> 2. <span style="color:red"><b><u>밑줄</u></b></span> : 좀 더 학습할 필요가 있는 주제(블로그에 정리)<br/>
-> 3. 최신 이력을 상단에 노출<br/>
----
+## 알고리즘, 자료구조에 관련 학습 저장소 <br>
 
+---
+## 저장소 인덱스 <br>
+
+#### [[BigO.md]빅오](./BigO.md) <br>
+
+빅오 표기법 <br>
+빅오 표현방법 <br>
+<br>
+#### [[Sort.md]정렬 알고리즘](./Sort.md) <br>
+
+선택정렬(Selection sort) <br>  
+
+<br><br><br><br><br><br><br><br><br><br><br>
+
+---
+## 이전 히스토리 (정리 필요) <br>
 
 > <span><h3><u>Heap</u></h3></span>
 - 우선순위 큐를 위하여 만들어진 자료구조.
