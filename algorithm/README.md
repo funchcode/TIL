@@ -3,14 +3,16 @@
 ---
 ## 저장소 인덱스 <br>
 
-#### [[BigO.md]빅오](./BigO.md) <br>
+### [[BigO.md]빅오](./BigO.md) <br>
 
 빅오 표기법 <br>
 빅오 표현방법 <br>
 <br>
-#### [[Sort.md]정렬 알고리즘](./Sort.md) <br>
+### [[Sort.md]정렬 알고리즘](./Sort.md) <br>
 
-선택정렬(Selection sort) <br>  
+선택정렬(Selection sort) <br>
+삽입정렬(Insertion sort) <br>
+버블정렬(Bubble sort) <br>  
 
 <br><br><br><br><br><br><br><br><br><br><br>
 
