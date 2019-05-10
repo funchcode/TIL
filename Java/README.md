@@ -23,6 +23,12 @@ String(Literal/new) <br>
 ### [Generic(Generic.md)](./Generic.md) <br>
 
 Generic Wildcard <br>
+
+### [Generic(Generic.md)](./Generic.md) <br>
+
+Exception, RuntimeException <br>
+예외처리방법 3가지 <br>
+
 <br>
 ### [Collection(Collection.md)](./Collection.md) <br>
 
