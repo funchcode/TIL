@@ -11,8 +11,11 @@
 Primitive Type, Wrapper Class <br>
 Reference Type <br>
 String(Literal/new) <br>
-<br>
+
 ### [JVM:Java Virtual Machine(JVM.md)](./JVM.md) <br>
+
+JVM 실행과정 <br>
+JVM 구조 설명 <br>
 
 ### [GC:Garbage Collector(GC.md)](./GC.md) <br>
 
@@ -24,12 +27,11 @@ String(Literal/new) <br>
 
 Generic Wildcard <br>
 
-### [Generic(Generic.md)](./Generic.md) <br>
+### [Exception(Exception.md)](./Exception.md) <br>
 
 Exception, RuntimeException <br>
 예외처리방법 3가지 <br>
 
-<br>
 ### [Collection(Collection.md)](./Collection.md) <br>
 
 Collection 설명 및 Iterator 설명 <br>
