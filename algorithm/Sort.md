@@ -119,6 +119,7 @@ Liverpool이 더 값이 크므로 자리를 교체한다. <br>
 <br>
 계속반복해나가면 크기순으로 정렬된다. <br>
 <br>
+
 ```java
 public class InsertionSort {
     public static void main(String[] args) {
@@ -188,6 +189,7 @@ Liverpool(8)과 Tottenham(7)을 비교 후 왼쪽 값이 크므로 자리를 교
 위의 표는 2회전 결과이다. <br>
 이렇게 마지막까지 반복하면 정렬된 자료를 얻을 수 있다. <br>
 <br>
+
 ```java
 public class BubbleSort {
     public static void main(String[] args) {
@@ -203,6 +205,96 @@ public class BubbleSort {
                 }
             }
         }
+    }
+}
+```
+
+---
+## 퀵 정렬 <br>
+
+퀵 정렬("Quick sort")는 분할 정복 알고리즘으로 매우 빠른 수행 속도를 자랑한다. <br>
+리스트를 불균형하게 분할한다. <br>
+문제를 2개의 작은 문제로 분리하고 각각을 해결한 다음 결과를 모아서 원래의 문제를 해결하는 전략이다. <br>
+분할 정복 방법은 대게 순환 호출을 이용하여 구현한다. <br>
+리스트 안에 있는 한 요소를 구한다. 이를 피벗(Pivot)이라고 한다. <br>
+피벗(Pivot)을 기준으로 피벗보다 작은 요소들을 피벗의 왼쪽, 피벗보다 큰 요소들을 피벗의 오른쪽으로 옮겨진다. <br>
+피벗을 제외한 오른쪽, 왼쪽 리스트를 다시 정렬한다. <br>
+부분 리스트들이 더 이상 분할이 불가능(리스트의 크기가 0 또는 1) 할때까지 반복한다. <br>
+<br>
+퀵 정렬은 분할, 정복, 결합으로 이루어져있다. <br>
+순환 호출이 한번 진행될 때마다 최소한 하나의 원소는 최종적인 위치가 결정된다. <br>
+그러므로 이 알고리즘은 반드시 끝난다는 걸 보장할 수 있다. <br>
+
+
+```java
+public class QuickSort {
+    public static void sort(int[] data, int l, int r) {
+        int left = l;
+        int right = r;
+        int pivot = data[(l+r)/2];
+        int temp;
+        do {
+            while(data[left] < pivot) left++;
+            while(data[right] > pivot) right--;
+            if(left <= right) {
+                temp = data[left];
+                data[left] = data[right];
+                data[right] = temp;
+            }
+        } while(left <= right);
+        if(l < right) sort(data, l, right);
+        if(r > left) sort(data, left, r);
+    }
+
+    public static void main(String[] args) {
+        int[] input = {11,43,2,85,4,7,53,27,28};
+        QuickSort.sort(input, 0, input.length-1);
+    }
+}
+```
+
+---
+## 합병정렬 <br>
+
+합병정렬("Merge sort")는 분할 정복 알고리즘 중 하나이다. <br>
+문제를 작은 2개의 문제로 분리하고 각각을 해결한 다음 결과를 모아서 원래의 문제를 해결하는 전략이다. <br>
+합병정렬은 분할, 정복, 결합의 부분으로 나뉜다. <br>
+합병 정렬의 과정에서는 추가적인 리스트가 필요하다. <br>
+합병 정렬에서 실제로 정렬이 이루어지는 시점은 결합(합병)하는 단계이다. <br>
+
+
+```java
+public class Merge {
+    public static void sort(int[] data, int l, int r) {
+        if(l < r) {
+            int mid = (l+r)/2;
+            sort(data, l, mid);
+            sort(data, mid+1, r);
+            merge(data, l, mid, r);
+        }
+    }
+
+    public static void merge(int[] data, int l, int mid, int r) {
+        int i = l;
+        int j = mid + 1;
+        int k = l;
+        int[] temp = new int[data.length];
+
+        while(i <= mid && j <= r) {
+            if(arr[i] < arr[j]) {
+                arr[k++] = arr[i++];
+            }else {
+                arr[k++] = arr[j++];
+            }
+        }
+        while(i<=mid) arr[k++] = arr[i++];
+        while(j<=r) arr[k++] = arr[j++];
+        for(int index = l; index < k ;index++) data[index] = temp[index];
+    }
+
+    public static void main(String[] args) {
+        int[] input = {11,43,2,85,4,7,53,27,28};
+        Merge.sort(input, 0, input.length-1);
     }
 }
 ```
