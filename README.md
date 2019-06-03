@@ -24,14 +24,14 @@
 
 ---
 
-### 5월 27일 ~ 6월 2일 목표
+### 6월 3일 ~ 6월 9일 목표
 
-✏️ 자바의 정석 6 ~ 7장 학습
+✏️ 자바의 정석 10 ~ 11장 학습
 
-✏️ FullCalendar 학습 및 적용
+✏️ Calendar 모듈 만들기(이유 : FullCalendar 유료)
 
-✏️ JSP/Servlet 6장 서블릿의 라이프 사이클까지 학습
+✏️ JSP/Servlet 7장, 11장, 12장 데이터베이스 사용하기까지 학습
 
 ✏️ Linux 3-15 저장 장치까지 학습
 
-✏️ Effective 3장까지 학습
+✏️ Effective ITEM 20까지 정리
