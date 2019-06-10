@@ -18,20 +18,20 @@
 
 ✏️ JSP/Servlet(뇌를 자극하는 JSP&Servlet)
 
-✏️ Linux(리눅스 커맨드라인 완벽 입문서)
+✏️ 스터디 Linux
 
 ✏️ Java(Effective Java 3/E)
 
 ---
 
-### 6월 3일 ~ 6월 9일 목표
+### 6월 10일 ~ 6월 16일 목표
 
-✏️ 자바의 정석 10 ~ 11장 학습
+✏️ 자바의 정석 12장 제네릭스 학습
 
-✏️ Calendar 모듈 만들기(이유 : FullCalendar 유료)
+✏️ JavaScript 인프런 강의 전체 학습
 
-✏️ JSP/Servlet 7장, 11장, 12장 데이터베이스 사용하기까지 학습
+✏️ JSP/Servlet 12장, 13장 책 학습 종료
 
-✏️ Linux 3-15 저장 장치까지 학습
+✏️ Linux MariaDB, Tomcat 개발환경 세팅
 
 ✏️ Effective ITEM 20까지 정리
