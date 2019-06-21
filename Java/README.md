@@ -1,55 +1,61 @@
-## Java 관련 학습 저장소 <br>
+## Java 저장소
 
 ---
-## 저장소 인덱스 <br>
+
+## INDEX
 
 
-### [자바 특징(Feature.md)](./Feature.md) <br>
+#### ▶︎ [자바 특징(Feature.md)](./Feature.md)
 
-### [자바 타입(Type.md)](./Type.md) <br>
+> **요약 :**
+> #객체지향언어, #함수지향, #이식성, #멀티스레드
 
-Primitive Type, Wrapper Class <br>
-Reference Type <br>
-String(Literal/new) <br>
+#### ▶︎ [자바 타입(Type.md)](./Type.md)
 
-### [JVM:Java Virtual Machine(JVM.md)](./JVM.md) <br>
+> **요약 :**
+> #primitive, #wrapper, #referene, #string
 
-JVM 실행과정 <br>
-JVM 구조 설명 <br>
+#### ▶︎ [JVM:Java Virtual Machine(JVM.md)](./JVM.md)
 
-### [GC:Garbage Collector(GC.md)](./GC.md) <br>
+> **요약 :**
+> #JVM 실행과정, #JVM 구조(5Area, GC), #JIT, #ClassLoader
 
-### [ClassLoader(ClassLoader.md)](./ClassLoader.md) <br>
+#### ▶︎ [Reflection(Reflection.md)](./Reflection.md)
 
-### [Reflection(Reflection.md)](./Reflection.md) <br>
+> **요약 :**
+> #개념, #특징
 
-### [Generic(Generic.md)](./Generic.md) <br>
+#### ▶︎ [Generic(Generic.md)](./Generic.md)
 
-Generic Wildcard <br>
+> **요약 :**
+> #개념, #사용방법
 
-### [Exception(Exception.md)](./Exception.md) <br>
+#### ▶︎ [Exception(Exception.md)](./Exception.md)
 
-Exception, RuntimeException <br>
-예외처리방법 3가지 <br>
+> **요약 :**
+> #개념, #RuntimeException, #사용방법
 
-### [Collection(Collection.md)](./Collection.md) <br>
+#### ▶︎ [Collection(Collection.md)](./Collection.md)
 
-Collection 설명 및 Iterator 설명 <br>
-<br>
+> **요약 :**
+> #개념, #List, #Set, #Map, #Iterator
 
-### [스프링 프레임워크(Spring.md)](./Spring.md) <br>
+#### ▶︎ [스프링 프레임워크(Spring.md)](./Spring.md)
 
-### [스프링 어노테이션 정리(SpringAnnotation.md)](./SpringAnnotation.md) <br>
+> **요약 :**
+> #개념, #EJB, #발전, #객체지향, #POJO, #DI
 
-### [AOP(AOP.md)](./AOP.md) <br>
+#### ▶︎ [AOP(AOP.md)](./AOP.md)
 
-AOP의 주요 개념 <br>
-코드로 이해하기 <br>
-<br>
-<br>
-<br>
-<br>
-<br>
+> **요약 :** && 프로젝트에 적용 필요
+> #AOP주요개념
+
+#### ▶︎ GC:Garbage Collector ::: 공사필요
+
+#### ▶︎ ClassLoader ::: 공사필요
+
+#### ▶︎ 스프링 어노테이션 정리 ::: 공사필요
 
 ---
-🏷 중첩 인터페이스 학습 필요 <br>
+
+🏷 중첩 인터페이스 학습 필요

@@ -1,4 +1,5 @@
-## "목차" <br>
+### "INDEX"
+
 1. @RunWith()
 2. @ContentConfiguration()
 3. @Builder
@@ -93,8 +94,8 @@ select nextval('hibernate_sequence')
 
 엔티티를 DB에 적용하기 **이전 이후**에 커스텀 콜백을 요청할 수 있는 어노테이션이다. <br>
 ```java
- * Specifies the callback listener classes to be used for an 
- * entity or mapped superclass. This annotation may be applied 
+ * Specifies the callback listener classes to be used for an
+ * entity or mapped superclass. This annotation may be applied
  * to an entity class or mapped superclass.
 ```
 
@@ -114,4 +115,4 @@ select nextval('hibernate_sequence')
 ---
 
 
-💊 
+💊
