@@ -1,4 +1,5 @@
-## "목차"
+## "INDEX"
+
 1. 외래키(Foreign Key)
 2. 식별관계(Identifying Relationship)
 3. 비식별관계(Non Identifying Relationship)
