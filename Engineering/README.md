@@ -1,19 +1,18 @@
-## 컴퓨터 전공 지식 학습 저장소 <br>
+## 💡 컴퓨터공학 저장소
 
----
-## 저장소 인덱스 <br>
+## INDEX
 
-### [(Memory.md)메모리](./Memory.md) <br>
+#### ▶︎ [메모리(Memory)](./Memory.md)
 
-메모리, 프로그램 동작 원리 <br>    
+> **요약 :** && 정보부실 <BR>
+> #메모리, #프로그램 동작 원리
 
-### [(Browser.md)브라우저](./Browser.md) <br>
+#### ▶︎ [브라우저(Browser)](./Browser.md)
 
-기본요소 <br> 랜더링엔진 <br> CSS, Javascript <br> Document.ready(), Window.load() <br>
+> **요약 :** && 정보부실 <BR>
+> #기본요소, #렌더링엔진, #CSS, #JavaScript
 
-### [(WebServer.md)웹서버](./WebServer.md) <br>
+#### ▶︎ [웹서버(WebServer)](./WebServer.md)
 
-웹서버와 WAS <br>
-Apache, Nginx <br>
-로드밸런싱 <br>
-프록시 <br>
+> **요약 :** <BR>
+> #WAS, #Nginx, #Proxy, Apache

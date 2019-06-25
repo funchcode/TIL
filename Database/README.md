@@ -12,7 +12,7 @@
 > **요약 :** && 정보부실 <BR>
 > #클러스터 인덱스
 
-### [[NoSQL.md]NoSQL](./NoSQL.md) <br>
+#### ▶︎ [NoSQL](./NoSQL.md)
 
 > **요약 :** && 정보부실 <BR>
 > #NoSQL, #RDB, #종류
