@@ -12,26 +12,18 @@
 
 ### 진행중인 학습 리스트
 
-✏️ 스터디 그룹(자바의 정석)
+✏️ 토비의 스프링
 
 ✏️ 토이 프로젝트(매장관리)
 
-✏️ JSP/Servlet(뇌를 자극하는 JSP&Servlet)
-
-✏️ 스터디 Linux
-
-✏️ Java(Effective Java 3/E)
+✏️ 스터디
 
 ---
 
-### 6월 10일 ~ 6월 16일 목표
+### 6월 27일 ~ 30일 (구직활동 주)
 
-✏️ 자바의 정석 12장 제네릭스 학습
+✏️ 1장 오브젝트와 의존관계 ~ 5장 서비스 추상화
 
-✏️ JavaScript 인프런 강의 전체 학습
+✏️ JavaScript 인프런 강의 끝내기
 
-✏️ JSP/Servlet 12장, 13장 책 학습 종료
-
-✏️ Linux MariaDB, Tomcat 개발환경 세팅
-
-✏️ Effective ITEM 20까지 정리
+✏️ Database 모델링, 설계 정리
