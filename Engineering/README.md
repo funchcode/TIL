@@ -16,3 +16,8 @@
 
 > **요약 :** <BR>
 > #WAS, #Nginx, #Proxy, Apache
+
+#### ▶︎ [REST(REST)](./WebServer.md)
+
+> **요약 :** <BR>
+> #REST, #REST API

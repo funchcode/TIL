@@ -48,6 +48,16 @@
 > **요약 :** && 프로젝트에 적용 필요 <BR>
 > #AOP주요개념
 
+#### ▶︎ [JDK(JDK.md)](./JDK.md)
+
+> **요약 :** <BR>
+> #JDK8(Lambda)
+
+#### ▶︎ [ORM(ORM.md)](./ORM.md)
+
+> **요약 :** <BR>
+> #JPA, #Hibernate, #Mybatis
+
 #### ▶︎ GC:Garbage Collector ::: 공사필요
 
 #### ▶︎ ClassLoader ::: 공사필요
