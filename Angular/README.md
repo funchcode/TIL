@@ -3,3 +3,4 @@
 ---
 
 ## 🍎 1. [Angular 소개](./Angular.md)
+## 🍏 2. [Component 소개](./Component.md)
