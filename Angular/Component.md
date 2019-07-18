@@ -26,4 +26,7 @@ CBD : Component Based Development
 
 ## 2. Component 구조
 
+Angular 애플리케이션은 분할된 컴포넌트로 구성되기 때문에 컴포넌트 간에는 컴포넌트 트리로 표현되는 부모-자식 관계가 형성된다.
+
 ![angular]()
+![angular2]()
