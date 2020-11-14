@@ -5,6 +5,8 @@
 
 #### ▶︎ [자바 특징(Feature.md)](./Feature.md)
 
+[자바 특징(Feature.md)](./Feature.md)
+
 > **요약 :** <BR>
 > #객체지향언어, #함수지향, #이식성, #멀티스레드
 
