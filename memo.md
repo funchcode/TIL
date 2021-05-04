@@ -15,3 +15,15 @@ Webpack
 
 Babel  
 * JavaScript 엔진에서 실행할 수 있는 이전 버전과 호환되는 JavaScript 버전으로 변환해주는 무료 오픈 소스 JavaScript 트랜스 컴파일러이다.
+
+React JSX  
+* React 요소는 변경 불가능하다. 특정 시간대의 UI를 보여주는 것이다.
+* UI를 업데이트하는 방법은 새로운 요소를 만드는 것이며, 이 새로운 요소를 ReactDOM.render()로 전달하는 것이다.  
+
+```yarn add react-router-dom```
+
+---
+
+## Spring Dispatcher Servlet
+
+__개념__  
