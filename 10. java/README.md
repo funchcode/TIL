@@ -1,4 +1,5 @@
 # 자바 정리(Java language)
-* [🔐 Spring Security](./spring-security.md)  
-* [🔍 Bean Validation](./validation.md)  
+
+* [🔐 스프링 시큐리티(Spring Security) 메모](./Spring-security.md)  
+* [🔍 데이터 유효성 검사 프레임워크(Bean Validation) 메모](./Bean-validation.md)  
 * [🗂 Hibernate](./hibernate.md)
