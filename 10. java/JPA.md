@@ -4,11 +4,16 @@
 
 ## 바로가기
 
-### [연관관계 매핑](#연관관계-매핑)
+### [▪︎ 연관관계 매핑](#연관관계-매핑)
 
+* [단방향, 양방향 연관관계](#단방향,-양방향-연관관계)
 * [1:N(일대다), N:1(다대일) 매핑](#1:N(일대다),-N:1(다대일)-매핑)
 
-### [레퍼런스](#Reference)
+### [▪︎ Spring Data JPA](#Spring-Data-JPA)
+
+* [PagingAndSortingRepository 인터페이스](#PagingAndSortingRepository-인터페이스)
+
+### [▪︎ 레퍼런스](#Reference)
 
 ---
 
@@ -37,10 +42,41 @@
 JPA에서 제공하는 어노테이션의 ```mappedBy``` 엘리먼트 값을 통해 **주인** 관계를 지정할 수 있다.  
 **주인이 아닌 객체에 ```mappedBy```를 지정한다.**
 
+```java
+/**
+* 현재 코드 구간에서는 [Member, Team] 두 개의 클래스가 존재한다.
+* 두 객체간의 관계는 [다 대 1]이다.
+*/
+public class Member {
+  private String id;
+  private String userName;
+  @ManyToOne
+  @JoinColumn(name = "team_id")
+  private Team team;
+}
+
+public class Team {
+  private String id;
+  private String name;
+  @OneToMany(mappedBy = "team")
+  private List<Member> members = new ArrayList<>();
+}
+```
+
 ### 1:N(일대다), N:1(다대일) 매핑
 
-* ```@OneToMany``` 일대다 관계 어노테이션
-* ```@ManyToOne``` 다대일 관계 어노테이션
+* ```@OneToMany``` 일대다 매핑 어노테이션
+* ```@ManyToOne``` 다대일 매핑 어노테이션
+
+---
+
+## Spring Data JPA
+
+데이터 접근 계층을 개발할 때 지루하게 반복되는 CRUD 로직를 위한 편리한 기능을 제공한다.
+
+### PagingAndSortingRepository 인터페이스
+
+```Pageable``` 인터페이스와 ```Sort``` 객체를 활용하여 쉽게 페이징, 정렬 처리 조회가 가능하다.
 
 ## Reference
 
