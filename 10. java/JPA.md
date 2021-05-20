@@ -13,6 +13,8 @@
 
 * [PagingAndSortingRepository 인터페이스](#PagingAndSortingRepository-인터페이스)
 
+### [▪︎ QueryDSL](#QueryDSL)
+
 ### [▪︎ 레퍼런스](#Reference)
 
 ---
@@ -78,7 +80,26 @@ public class Team {
 
 ```Pageable``` 인터페이스와 ```Sort``` 객체를 활용하여 쉽게 페이징, 정렬 처리 조회가 가능하다.
 
+---
+
+## QueryDSL
+
+JPA 표준이 아니다.  
+= Dependency 추가해야 사용할 수 있다.  
+Prefix로 Q가 붙은 객체를 자동 생성한다.  
+= 생성을 위해 별도의 플러그인을 추가해야한다.  
+
+자동으로 생성한 객체를 통해 Query를 생성하므로 컴파일 시에 Type 오류를 잡아낼 수 있다.  
+= Type Safe  
+
+QueryDSL 사용하여 로직을 작성할 경우 아래와 같은 처리 흐름을 갖게 된다.  
+기존) Controller - Service - Repository  
+추가 후) Controller - Service - Predicate - Repository  
+이런 흐름의 장점은 Repository 코드를 단순하게 유지할 수 있으며, 쿼리 로직을 분리하여 관리할 수 있는 장점이 있다.  
+
 ## Reference
 
 * 🔗 [ORM과 JPA 패러다임 정리된 글](https://velog.io/@adam2/JPA%EB%8A%94-%EB%8F%84%EB%8D%B0%EC%B2%B4-%EB%AD%98%EA%B9%8C-orm-%EC%98%81%EC%86%8D%EC%84%B1-hibernate-spring-data-jpa)
 * 🔗 [JPA 단방향/양방향 연관관계 정리된 글](https://cornswrold.tistory.com/350)
+* 🔗 [Gradle 6.x 버전에서 QueryDSL annotationProcessor 세팅 방법](https://jojoldu.tistory.com/372)
+* 🔗 [QueryDSL 플러그인 세팅하는 방법 Gradle 버전 별 차이 정리글](http://honeymon.io/tech/2020/07/09/gradle-annotation-processor-with-querydsl.html)
