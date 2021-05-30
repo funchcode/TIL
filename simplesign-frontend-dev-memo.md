@@ -64,3 +64,19 @@ Microsoft 사에서 개발.
 
 * 선택자
   * ```parent > child``` 선택자 child만 적용
+  
+* ```<input>```
+  * placeholder 속성에 스타일을 지정할 수 있음.
+
+
+## axios
+
+REST 서버와 통신하기 위해 해당 모듈을 불러와 사용한다.
+
+```> yarn add axios```  
+
+Javascript built-in 라이브러리인 fetch API로 대체가능하다.  
+
+* fetch API - axios와 비교했을 때 함수를 호출하는 방법, 세팅하는 설정 값 외에 큰 차이점은 없는 듯 보인다.
+
+내부적으로 Promise API를 사용하여 HTTP 비동기 통신을 한다.
