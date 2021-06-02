@@ -176,3 +176,55 @@ SCSS는 CSS 구문과 완전히 호환되도록 새로운 구문을 도입해서
 
 > 템플릿 리터럴이란 내장된 표현식을 허용하는 문자열 리터럴을 말하며, 백틱(`) 특수문자를 사용한다.      
 > [MDN - Template literals](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Template_literals)
+
+## CSS [table]
+
+등록된 데이터에 대한 목록을 표기하는 화면을 개발하면서 <table> 태그가 필요하게 되었다.  
+특정 필드의 조건이 데이터가 길어질 경우 ```...```ellipsis 생략처리를 해야했는데, 처리할 ```<td>``` 태그에 아래의 속성을 지정해야 적용된다.
+
+```css
+/* 3번째 필드 데이터가 매우 길어질 가능성이 있다. */
+td:nth-child(3) {
+  mix-width: 597px; /* 현재 <td>의 너비를 지정해야한다. 지정하지 않을 경우 브라우저가 자동으로 조정한다. */
+  white-space: nowrap; /* 텍스트가 길어질 때 자동 줄바꿈되지 않도록하는 설정 */
+  overflow: hidden; /* 넘어간 데이터 제거 */
+  text-overflow: ellipsis; /* 뒤의 잘린 부분을 .... 처리 */
+}
+```
+
+리스트의 짝수 또는 홀수 행에 대해 CSS를 적용하기 위해서는 아래와 같이 입력하면 된다.
+
+```css
+/*tr:nth-child(2n) 짝수 처리인 경우 */
+tr:nth-child(2n-1) {
+  background-color: tomato;
+}
+```
+
+## React Function Component Hook
+
+Hook
+함수 컴포넌트에서 React State와 LifeCycle을 연동(Hook Into)할 수 있게 해주는 함수이다.
+Class 컴포넌트에서는 동작하지 않는다.
+
+1. State Hook
+
+2. Effect Hook
+   React 컴포넌트에서 컴포넌트 안의 데이터를 가져오거나 구독, DOM을 직접 조작하는 행위를 Side Effects(=Effects)라고 한다.
+   달리 말해서, 다른 컴포넌트에 영향을 줄 수 있고 렌더링 과정에서는 구현할 수 없는 작업이기 때문이다.
+
+Class 컴포넌트의 `componentDidMount` ` componentDidUpdate` `componentWillUnmount`와 같은 목적으로 제공했다.
+하지만, 하나의 API로 통합하여 useEffect로 지원한다.
+
+useEffect = ['componenetDidMount','componentDidUpdate'] : 매 렌더링 이후에 effects를 실행[최초 렌더링 포함]
+
+그 외, useLayoutEffect
+
+clean-up을 위한 메커니즘, useEffect( () => { return function cleanup() { } } ); 함수의 네임드는 신경안써도 된다.
+
+useEffect는 매 렌더링 시에 실행된다. 독립적인 useEffect 메모리.
+
+* clean-up 호출 시점 테스트
+
+Effect를 매번 실행되지 않도록 제어하는 방안이 있다.
+선택적 인수인 두 번째 인수로 배열을 넘기면 된다. 딱 한번만 실행시키고 싶을 경우 빈 배열을 넘기면 된다.
