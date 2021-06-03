@@ -228,3 +228,35 @@ useEffect는 매 렌더링 시에 실행된다. 독립적인 useEffect 메모리
 
 Effect를 매번 실행되지 않도록 제어하는 방안이 있다.
 선택적 인수인 두 번째 인수로 배열을 넘기면 된다. 딱 한번만 실행시키고 싶을 경우 빈 배열을 넘기면 된다.
+
+# React
+
+# Hook
+
+## useEffect
+
+화면에 렌더링이 완료된 이 후에 전달받은 함수를 실행한다.
+
+컴포넌트가 화면에서 제거될 때 정리해야하는 작업이 있을 수 있는데 이를 위해 cleanup 함수를 반환할 수 있다.
+
+- cleanup: 컴포넌트가 화면에서 제거되기 전에 실행된다.
+
+## useLayoutEffect
+
+DOM에서 레이아웃을 읽고 동기적으로 리렌더링하는 경우에 사용한다.
+
+# Javascript
+
+## map()
+
+모든 배열은 map() 함수를 갖고 있다.
+
+Each child in an array or iterator should have a unique "key" prop.
+
+React Element는 고유한 key 값을 가져야하는데, map() 함수 내에서 Element를 생성할 경우 key 값을 명시적으로 세팅해줘야한다.
+
+# 리액트의 Table
+
+`<table>` 태그 내에 `<thead></thead>` `<tbody></tbody>` 가 없는 경우 브라우저에서 자동으로 삽입한다.
+
+JSX에서 `<table>` 을 리랜더링하게 되는 경우 Dom tree가 예상과는 다르게 진행될 수 있으므로 JSX에서는 명시적으로 `<thead></thead>` `<tbody></tbody>` 를 사용해야한다.
