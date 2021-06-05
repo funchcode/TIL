@@ -260,3 +260,33 @@ React Element는 고유한 key 값을 가져야하는데, map() 함수 내에서
 `<table>` 태그 내에 `<thead></thead>` `<tbody></tbody>` 가 없는 경우 브라우저에서 자동으로 삽입한다.
 
 JSX에서 `<table>` 을 리랜더링하게 되는 경우 Dom tree가 예상과는 다르게 진행될 수 있으므로 JSX에서는 명시적으로 `<thead></thead>` `<tbody></tbody>` 를 사용해야한다.
+
+
+## 실행 중 컴포넌트 타입 선택하기
+
+![런타임 환경에서 타입 변경 방법](./99.%20assets/런타임환경에서타입변경.png)
+
+## 컴포넌트 호출 시 Props를 효율적으로 넘기는 방법
+
+"전개" 연산자인 `...`를 통해 객체를 넘겨줄 수 있다.
+
+```jsx
+function Practice() {
+	const props = {firstName: 'bob', lastName: 'bo'};
+	return <Greeting {...props} />;
+}
+```
+
+전개 연산자를 사용하는 것은 유용하지만, 불필요한 Props 값도 함께 넘기게되니 주의해서 사용해야한다.
+
+## 비동기로 호출되는 setState()
+
+setState()의 호출은 비동기적으로 이루어지는데, 그렇기 때문에 setState() 호출 직후 업데이트한 값으로 변경되었다는 보장을 받을 수 없다.
+
+setState는 비동기로 동작한다 ??
+
+이벤트 핸들러 내에서 호출 시 비동기적으로 동작한다.
+
+업데이트한 값으로 보장을 받기 위해서는 ??
+
+setState에 객체 대신 함수를 전달해서 해결할 수 있다. (=updater 함수)
