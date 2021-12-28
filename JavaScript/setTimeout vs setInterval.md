@@ -1,0 +1,2 @@
+# setTimeout vs setInterval
+
