@@ -26,7 +26,7 @@
 
 ### CorsConfigurer
 
-> CORS: Cross-Origin Resource Sharing
+> CORS: Cross-Origin Resource Sharing  
 > `CORS`는 웹 어플리케이션 도메인이 다른 도메인의 리소스에 대해서 접근이 허용되는지 **체크**하는 메커니즘이다.  
 > 웹 어플리케이션은 리소스를 요청하는 서버의 **프로토콜, 도메인, 포트**가 다를 경우, `Cross-Origin Http Request` 요청을 실행한다.  
 > 보안상의 이유로 브라우저는 `Cross-Origin Http Request`에 대해 **Same-Origin Policy**를 적용하여 동작한다.  
@@ -59,4 +59,22 @@ public CorsConfigurationSource corsConfigurationSource() {
     return source;
 }
 ...
+```
+
+### HttpBasicConfigurer
+
+인증 절차에 실패하는 경우 호출되는 객체
+
+HttpSecurity 객체에 `.httpBasic()`로 호출만하는 경우라면 `BasicAuthenticationEntryPoint` 객체가 호출된다.
+
+`.httpBasic().authenticationEntryPoint({customEntryPoint})` 메서드를 통해 제어가 가능하다.
+
+```java
+@Component
+public class CustomAuthenticationEntryPoint implements AuthenticationEntryPoint {
+    @Override
+    public void commence(HttpServletRequest request, HttpServletResponse response, AuthenticationException authException) throws IOException, ServletException {
+        // todo custom code
+    }
+}
 ```
