@@ -33,3 +33,21 @@
 ## Securtiy
 
 ### 하이 재킹
+
+---
+
+## React
+
+### React.memo
+
+렌더링 결과를 메모이징(Memoizing)함으로써 불필요한 리렌더링을 건너뛴다.
+
+React Rendering 기본 동작
+
+- React는 먼저 Component를 렌더링한 뒤 이전 렌더링 결과와 비교하여 DOM 업데이트를 결정한다.
+- Render 결과가 이전과 다르다면 DOM을 업데이트한다.
+
+React.memo Render 동작
+
+- Component를 렌더링하고 결과를 메모이징(Memoizing)한다.
+- 다음 렌더링이 일어날 때 `props`가 같다면 React는 메모이징된 내용을 재사용한다.
