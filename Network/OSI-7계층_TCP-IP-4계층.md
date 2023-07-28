@@ -23,8 +23,6 @@ OSI 7계층하고 TCP/IP 4계층을 구분하는 이유 정리
 6. 표현 계층(Presentation Layer)
 7. 응용 계층(Application Layer)
 
----
-
 ## TCP/IP 4계층
 
 ### 4계층
@@ -34,8 +32,6 @@ OSI 7계층하고 TCP/IP 4계층을 구분하는 이유 정리
 3. 전송 계층(Transfer Layer)
 4. 응용 계층(Application Layer)
 
----
-
-### 참고 자료
+## 참고 자료
 
 [OSI 7계층, TCP/IP 4계층에 대한 이미지 자료와 각 계층 별 간략 정리된 블로그](https://lxxyeon.tistory.com/155)
