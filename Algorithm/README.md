@@ -2,74 +2,51 @@
 
 ## 관련 키워드
 
-### 탐색(search)
+- Search
+  - Linear Search
+  - Binary Search
 
-- 선형 탐색 (Linear)
-- 이분(||이진) 탐색 (Binary)
-- 순차 탐색 (Sequential)
-- 해시 (Hash)
+- Sort
+  - Selection Sort
+  - Bubble Sort
+  - Insertion Sort
+  - Merge Sort
+  - Quick Sort
+  - Heap Sort
+  - Counting Sort
+  - Radix Sort
+  - Bucket Sort
 
-### 정렬(sorting)
-
-- 버블 정렬 (Bubble)
-- 선택 정렬 (Selection)
-- 삽입 정렬 (Insertion)
-- 퀵 정렬 (Quick)
-- 병합 정렬 (Merge)
-- 힙 정렬 (Heap)
-- 기수 정렬 (Radix)
-- 계수 정렬 (Count)
-
-### 완전 탐색
-
-- 브루트 포스
-- 비트 마스크
-- 백트리캥
-- 재귀 함수
-- 순영
-- 깊이 우선 탐색(DFS)
-- 너비 우선 탐색(BFS)
-
-### 분할 정복
-
-### 동적 계획법
-
-### 그리디
-
-### 트리
-
-- 이진 검색 트리 (Binary Search)
-
-### 그래프
-
-- 위상 정렬
-
-### 최단 경로
-
-- Floyd-Warshall
-- 다익스트라 (Dijkstra)
-- Bellman-Ford
-
-### 최소 신장 트리 (MST, Minimum Spanning Tree)
-
-- Kruskal
-- Prim
+- Greedy Algorithms
+- Dynamic Programming
+  - Brute force
+  - Bitmasking
+  - Permutation
+- Graph Algorithms
+  - DFS
+  - BFS
+  - Topological Sort
+  - Floyd Warshall
+  - Dijkstra
+  - Bellman Ford
+  - Kruskal's
+  - Prim's
+- Pattern Searching
+- Recursion
+- Backtracking
+- Divide and Conquer
+- Mathematical Algorithms
+  - Euclidean
+- Geometric Algorithms
+- Bitwise Algorithms
+- Randomized Algorithms
+- Branch and Bound
 
 ### 기타
 
-- 비트 연산
-- 진수 변환
-- 재귀(Recursion)
-- 유클리드 호제법 (최대공약수, 최소공배수)
-- 투포인터 (슬라이딩 윈도우)
-- 조합, 순열
-- 파라메트릭 서치
-- 최장 증가 수열 (LIS)
-- 최소 공통 조상 (LCA)
-- 비트 마스크 (BitMask)
-- Matching Parenthesis problem
-- Variables / Pointers manipulation
-- reverse linked list (duplicates, removing duplicates)
+- Two pointer Algorithms
+- Long Increasing Subsequence
+- Lowest Common Ancestor
 
 ---
 
