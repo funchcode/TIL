@@ -1,0 +1,6 @@
+---
+layout: landing
+---
+
+# ▪ Effective Java
+

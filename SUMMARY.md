@@ -12,6 +12,7 @@
 ## 🔘 Learning
 
 * [▪ Head First Go](learning/head-first-go.md)
+* [▪ Effective Java](learning/effective-java.md)
 
 ## 🔳 Reading
 
