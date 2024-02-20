@@ -26,3 +26,85 @@
 
 ### 실제로 적용해보면서 이해해보기
 
+#### 의존성 추가
+
+```groovy
+dependencies {
+    // ...
+    implementation 'org.springframework:spring-aspects'
+    // ...
+}
+```
+
+#### 예제 프로젝트 구조
+
+<div align="left">
+
+<figure><img src="../../.gitbook/assets/project-structure.png" alt=""><figcaption></figcaption></figure>
+
+</div>
+
+#### 적용
+
+1. 비즈니스 로직(서비스 레이어드)
+
+```java
+package com.example.funch.order;
+// import ... 생략
+@Service
+public class OrderService {
+    public String purchase(String userId) {
+        // 복잡한 비즈니스 로직
+        return puchaseId;
+    }
+}
+```
+
+2. 새로운 요구사항 발생
+
+* 1\) 사용자 구매 행위에 대해 로그 출력
+* 2\) 알림 발송
+
+3. AOP 적용
+
+1\) 사용자 구매 행위 로그 출력을 위한 Aspect
+
+```java
+package com.example.funch.order.aop;
+// import ... 생략
+@Component
+@Aspect // 부가 관심사 등록
+public class OrderActionAspect {
+   // Around: Advice 옵션
+   // execution: Point Cut 옵션
+   @Around("execution(* com.example.funch.order.OrderService.purchase(..))")
+   public Object printLog(ProceedingJoinPoint jointPoint) throws Throwable {
+      // 사용자 행위에 대한 로그 출력 또는 저장 로직
+      return joinPoint.proceed();
+   }   
+}
+```
+
+2\) 사용자 구매 알림 발송 Aspect
+
+```java
+package com.example.funch.order.aop;
+// import ... 생략
+@Component
+@Aspect // 부가 관심사 등록
+public class OrderNotificationAspect {
+    // AfterReturning: Advice 옵션
+    // execution: Point Cut 옵션
+    @AfterReturning(
+         pointcut = "execution(* com.example.funch.order.OrderService.purchase(...))",
+         returning = "result"   
+    )
+    public void send(JoinPoint joinPoint, String result) {
+         // 사용자 구매 알림 발송 로직
+    }
+}
+```
+
+
+
+간단하게 흐름만 정리했을 때에는 위와 같은 흐름으로 Aspect를 생성한다.
