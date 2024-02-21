@@ -15,7 +15,7 @@
 
 * [▪ Head First Go](learning/head-first-go.md)
 * [▪ Effective Java](learning/effective-java.md)
-* [▪ 도커 교과서](learning/undefined.md)
+* [▪ 도커 교과서](learning/docker-course-book.md)
 
 ## 🔳 Reading
 

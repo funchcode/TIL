@@ -8,7 +8,7 @@
 
 
 
-### "핵심적인 관점"과 "부가적인 관점"
+### "핵심적인 관점"과 "부가적인 관점" <a href="#compare-aspect" id="compare-aspect"></a>
 
 핵심적인 관점: 핵심 비즈니스 로직
 
@@ -24,9 +24,9 @@
 
 
 
-### 실제로 적용해보면서 이해해보기
+### 실제로 적용해보면서 이해해보기 <a href="#example" id="example"></a>
 
-#### 의존성 추가
+#### 의존성 추가 <a href="#example-dependency" id="example-dependency"></a>
 
 ```groovy
 dependencies {
@@ -36,7 +36,7 @@ dependencies {
 }
 ```
 
-#### 예제 프로젝트 구조
+#### 예제 프로젝트 구조 <a href="#example-structure" id="example-structure"></a>
 
 <div align="left">
 
@@ -44,7 +44,7 @@ dependencies {
 
 </div>
 
-#### 적용
+#### 적용 <a href="#example-apply" id="example-apply"></a>
 
 1. 비즈니스 로직(서비스 레이어드)
 
