@@ -10,6 +10,8 @@
 * [▪ Go](dev/golang/README.md)
   * [\[package\] 헥사고날 아키텍처로 프로젝트 구조 잡기](dev/golang/package.md)
   * [\[OAuth\] Kakao, Naver 모듈화 정리](dev/golang/oauth-kakao-naver.md)
+* [▪ Next.js](dev/next.js/README.md)
+  * [\[rendering\] SCR, SSR, SSG 방식](dev/next.js/rendering-scr-ssr-ssg.md)
 
 ## 🔘 Learning
 
