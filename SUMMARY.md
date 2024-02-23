@@ -7,7 +7,7 @@
 * [▪ Spring](dev/spring/README.md)
   * [\[JPA\] N+1 문제](dev/spring/jpa-n+1.md)
   * [\[AOP\] Spring AOP 정리](dev/spring/aop-spring-aop.md)
-  * [\[Thread\] ThreadPoolTaskExecutor 정리](dev/spring/thread-threadpooltaskexecutor.md)
+  * [\[Thread\] ThreadPoolExecutor 정리](dev/spring/thread-threadpoolexecutor.md)
 * [▪ Go](dev/golang/README.md)
   * [\[package\] 헥사고날 아키텍처로 프로젝트 구조 잡기](dev/golang/package.md)
   * [\[OAuth\] Kakao, Naver 모듈화 정리](dev/golang/oauth-kakao-naver.md)
