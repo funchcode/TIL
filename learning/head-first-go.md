@@ -153,3 +153,100 @@ func (n *Number) Double() { // 리시버 매개변수를 포인터 타입으로 
     *n *= 2
 }
 ```
+
+
+
+## 인터페이스
+
+자바에서는 클래스가 어떤 인터페이스를 구현하고 있다는 것을 명시적으로 작성하는데 Go는 인터페이스를 선언하는 방식이 완전히 다르다.
+
+```go
+// 인터페이스 선언
+type Player interface {
+    Play(song string)
+    Stop()
+}
+// TapePlayer 타입 선언
+type TapePlayer struct {
+}
+// TapeRecorder 타입 선언
+type TapeRecoder struct {
+}
+// 인터페이스 구현 (TapePlayer는 Player 인터페이스를 만족한다.)
+func (t TapePlayer) Play(song string) {
+}
+func (t TapePlayer) Stop() {
+}
+// 인터페이스 구현 (TapeRecoder는 Player 인터페이스를 만족한다.)
+func (t TapeRecoder) Play(song string) {
+}
+func (t TapeRecoder) Stop() {
+}
+
+func playList(device player, song string) {
+    device.Play(song)
+    device.Stop()
+}
+
+func main() {
+    var player Player
+    player = TapePlayer{}
+    playList(player, "국힙")
+    player = TapeRecoder{}
+    playList(player, "캐롤")
+}
+```
+
+**인터페이스**가 가진 메서드를 타입에서 동일하게 메서드를 구현하고 있다면 해당 타입은 인터페이스를 만족한다고 Go에서는 판단한다.
+
+### 타입 단언(type assertion)
+
+구체 타입의 값이 인터페이스 타입의 변수에 할당되었을 때 타입 단언(type assertion)을 사용하면 구체 타입의 값을 가져올 수 있다.
+
+```go
+var player Player = TapeRecoder{}
+var tapeRecoder TapeRecoder = player.(TapeRecoder) // 타입 단언문
+```
+
+#### 타입 단언 실패 시 패닉 방지하기
+
+두 번째 반환 값을 통해서 성공 실패 여부를 확인할 수 있는 방법을 이용한다.
+
+```go
+var player Player = TapeRecoder{}
+tapeRecoder, ok := player.(TapeRecoder) // 타입 단언문
+if ok {
+    tapeRecoder.Recode()
+} else {
+    fmt.Println("Player was not a TapeRecoder")
+}
+```
+
+런타입 환경에서 시스템 panic이 발생하는 것을 방지해야 한다.
+
+### "error" 인터페이스
+
+Go의 error 타입은 인터페이스이다.
+
+```go
+type error interface {
+    Error() string
+}
+```
+
+{% hint style="info" %}
+error 타입은 int와 string과 같은 "미리 정의된 식별자"이다.
+
+유니버스 블록(universe block)의 일부로 패키지에 관계없이 어느 곳에서나 사용할 수 있다.
+{% endhint %}
+
+### 빈 인터페이스
+
+메서드 정으가 없는 인터페이스는 그 어떤 타입이라도 만족하는 인터페이스가 된다.
+
+```go
+type Anything interface {}
+```
+
+
+
