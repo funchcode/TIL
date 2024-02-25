@@ -113,3 +113,43 @@ func main() {
 반면에 Go에서는 오버로딩 개념이 없다.
 
 관련 링크: [https://go.dev/doc/faq#overloading](https://go.dev/doc/faq#overloading)
+
+
+
+## 메서드 정의
+
+메서드 정의는 함수 정의 방법과 유사하다.
+
+차이점은 메서드를 정의할 때 **리시버 매개변수(receiver parameter)**를 추가로 선언해야 한다는 점이다.
+
+```go
+func (t CustomType) helloWorld() { // (t CustomType) 리시버 매개변수
+    fmt.Println("헬로월드")
+}
+```
+
+Go는 다른 언어의 "self"나 "this" 대신 리시버 매개변수를 사용한다.
+
+포인터 리시버 매개변수
+
+리시버 매개변수도 "pass-by-value"로 복사본을 받는다.
+
+```go
+type Number int
+
+func (n Number) Double() {
+    n *= 2
+}
+
+func main() {
+    number := Number(4)
+    number.Double()
+    fmt.Println(number) // 8이 아닌 4가 출력된다.
+}
+```
+
+```go
+func (n *Number) Double() { // 리시버 매개변수를 포인터 타입으로 변경
+    *n *= 2
+}
+```
