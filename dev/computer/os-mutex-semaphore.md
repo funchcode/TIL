@@ -53,7 +53,56 @@ Critical Section(임계 영역)
 ```java
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
+
+public class MutexExample {
+    private static final int ITERATIONS = 10000;
+    private static int sharedResource = 0;
+    private static Lock mutex = new ReentrantLock();
+    
+    public static void main(String[] args) {
+        Thread thread1 = new Thread(MutexExample::increment);
+        Thread thread2 = new Thread(MutexExample::increment);
+        thread1.start();
+        thread2.start();
+        try {
+            thread1.join();
+            thread2.join();
+        } catch (e) {}
+        System.out.println(sharedResource);
+    }
+    
+    public static void increment() {
+        for (int i = 0 ; i < ITERATIONS ; i++) {
+            mutex.lock();
+            try {
+                sharedResource++;
+            } finally {
+                mutex.unlock();
+            }
+        }
+    }
+}
 ```
+
+`java.util.concurrent` 패키지의 ReentrantLock 클래스를 사용해서 뮤텍스를 적용한 코드이다.
+
+`increment` 메서드에서는 공유 자원인 `sharedResource`에 접근하여 값 1을 더하는 간단한 메서드다.
+
+두 개의 스레드가 각 10000번 씩 `increment` 메서드를 수행하기 때문에 기대하는 결과 값은 20000이다.
+
+`main`메서드를 실행해보면 원하는 결과가 콘솔에 출력되는 것을 확인할 수 있다.
+
+
+
+뮤텍스를 제거한 후에 동일하게 실행해보자.
+
+```java
+public static void increment() {
+    sharedResource++;
+}
+```
+
+`main` 메서드를 실행해보면 콘솔에 20000이 아닌 다른 값이 콘솔에 출력되는 것을 볼 수 있다.
 
 
 
