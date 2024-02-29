@@ -26,6 +26,11 @@
 
 * [내 인생 5년 후](reading/5.md)
 
+## 🔲 MEMORIES
+
+* [▪️ 2024](memories/2024/README.md)
+  * [24.02.29 Hi James](memories/2024/24.02.29-hi-james.md)
+
 ***
 
 * [👁️‍🗨️ github.com](https://github.com/funchcode)
