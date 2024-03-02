@@ -304,3 +304,90 @@ func main() {
 
 고루틴을 사용하면 멀티 프로세스의 이점을 최대한 활용하여 프로그램이 실행되도록 만들 수 있다.
 
+**동시성(Concurrentcy)**를 활용하면 프로그램이 한 작업을 멈추고 다른 작업을 수행할 수 있도록 만들 수 있다.
+
+동시성을 지원하도록 작성된 프로그램은 여러 작업을 동시에 실행하는 **병렬성(parallelism)**도 지원할 수 있다.
+
+Go에서는 동시에 실행되는 작업을 **고루틴**이라고 부르는데 다른 프로그래밍 언어의 스레드(Thread)와 유사한 개념이다.
+
+다른 점은 _고루틴은 스레드보다 좀 더 적은 메모리를 사용_하며 좀 더 빠른 시작 및 종료 시간을 갖기 때문에 한 번에 더 많은 고루틴을 실행할 수 있다.
+
+```go
+func a() {
+    for i := 0; i < 50; i++ {
+        fmt.Print("A")
+    }
+}
+func b() {
+    for i := 0; i < 50; i++ {
+        fmt.Print("B")
+    }    
+}
+func main() {
+    go a()    // 고루틴 실행
+    go b()    // 고루틴 실행
+    time.Sleep(time.Second) // "main이 종료되면 a, b 함수 실행 여부와 상관없이 종료"되는 것을 방지하기 위한 코드
+    fmt.Println("END")
+}
+/* output
+aaaaabbbbaabaaabbabaabbabb(...생략)END
+*/
+```
+
+위의 코드에서는 3개(main, a, b)의 고루틴이 실행되고 있다고 볼 수 있다.
+
+출력된 output 결과를 봤을 때 _실행 시점을 직접 제어할 수 없고 고루틴 간의 전환을 보장 받을 수 없는 것_으로 보인다.
+
+그리고 go문은 반환 값과 함께 사용할 수 없다.
+
+## 채널
+
+고루틴끼리 서로 통신할 수 있는 방법으로 채널(channel)을 사용할 수 있다.
+
+채널을 사용하면 한 고루틴에서 다른 고루틴으로 값을 전달할 수 있고 수신한 고루틴이 값을 사용하기 전에 송신 고루틴이 값을 보냈음을 보장할 수 있다.
+
+### 채널에 값 전달하기
+
+채널에 값을 전달할 때 `<-` 연산자를 사용하여 전달한다.
+
+**사용 형태:** `{값을 보낼 채널} <- {값}`
+
+채널은 현재 고루틴의 모든 작업을 중지하는 블로킹(blocking)이 발생한다.
+
+어떤 채널에 대한 값을 송신 연산은 다른 고루틴이 해당 체널에서 값을 가져가기 전까지 송신 고루틴을 블로킹한다.
+
+그 반대의 상황
+
+수신 연산은 다른 고루틴이 해당 채널에 값을 보내기 전까지 수신 고루틴을 블로킹한다.
+
+이러한 동작 방식을 통해 고루틴은 자기 자신의 행동을 **동기화(synchronize)**할 수 있다.
+
+```go
+func abc(channel chan string) {
+    channel <- "a"
+    channel <- "b"
+    channel <- "c"
+}
+func def(channel chan string) }
+    channel <- "d"
+    channel <- "e"
+    channel <- "f"
+} 
+func main() {
+    // 두 개의 채널 생성
+    channel1 := make(chan string)
+    channel2 := make(chan string)
+    // 각 채널을 고루틴에서 실행되는 함수로 전달
+    go abc(channel1)
+    go def(channel2)
+    fmt.Print(<-channel1)
+    fmt.Print(<-channel2)
+    fmt.Print(<-channel1)
+    fmt.Print(<-channel2)
+    fmt.Print(<-channel1)
+    fmt.Print(<-channel2)
+}
+/* output
+    adbecf
+*/
+```
