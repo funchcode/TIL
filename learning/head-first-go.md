@@ -248,5 +248,59 @@ error 타입은 int와 string과 같은 "미리 정의된 식별자"이다.
 type Anything interface {}
 ```
 
+## 에러 핸들링
 
+### defer
+
+호출되고 있는 함수가 일찍 종료되거나 에러로 인해 종료되더라도 특정 함수의 호출을 보장한다.
+
+```go
+func main() {
+    defer fmt.Println("잘가")
+    fmt.Println("안녕")
+    fmt.Println("밥묵자")
+}
+
+// output 
+/*
+안녕
+밥묵자
+잘가
+*/
+```
+
+### panic
+
+프로그램에서 panic을 만나면 현재 실행되고 있는 함수를 중단하고 에러 메세지를 출력한 뒤 크래시를 발생시킨다.
+
+* 지연 호출(defer)은 실행된다.
+
+### recover
+
+recover로 panic 상태의 프로그램을 복구할 수 있다.
+
+단, 같은 함수 내에서 recover 호출 라인 전에 panic 라인이 호출되면 recover은 호출되지 않는다.
+
+```go
+func main() {
+    panic("oh no") // 실행되어 프로그램 종료
+    recover()
+}
+```
+
+defer를 사용해서 recover을 보장 받을 수 있도록 처리할 수 있다.
+
+```go
+func calmDown() {
+    recover()
+}
+func main() {
+    defer calmDown()
+    panic("oh no")
+}
+```
+
+## 고루틴
+
+고루틴을 사용하면 멀티 프로세스의 이점을 최대한 활용하여 프로그램이 실행되도록 만들 수 있다.
 
