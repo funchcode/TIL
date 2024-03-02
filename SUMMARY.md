@@ -34,3 +34,4 @@
 ***
 
 * [👁️‍🗨️ github.com](https://github.com/funchcode)
+* [♟️ funchcode@gmail.com](mailto:funchcode@gmail.com)
