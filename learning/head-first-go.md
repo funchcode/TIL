@@ -391,3 +391,155 @@ func main() {
     adbecf
 */
 ```
+
+## 번외 <a href="#extra" id="extra"></a>
+
+### if 문에서의 초기화문 <a href="#extra-if" id="extra-if"></a>
+
+```go
+if {초기화문}; {조건식} {
+    // code
+}
+```
+
+if문에 초기화문을 넣을 수 있다.
+
+if문 스코프 안에서 사용할 변수를 선언할 수 있다.
+
+주로 err 변수를 초기화문에서 선언한다.
+
+### Switch문 <a href="#extra-switch" id="extra-switch"></a>
+
+switch 문을 사용하는 방법은 다른 언어와 거의 흡사한데 한 가지 다른 점이 있다.
+
+`break` 문을 사용하지 않는다. `case`가 포함하고 있는 코드가 실행된 후 switch 문을 빠져나온다.
+
+`break` 문을 사용하는 다른 언어에서 `break` 문을 빠뜨리는 실수로 인해 의도하지 않은 버그를 만든 적이 있을 것이다.
+
+Go는 이러한 상황을 피하기 위해 의도적으로 `break` 키워드를 넣지 않았다.
+
+
+
+`case`의 코드가 실행된 이후 switch문에서 빠져나오지 않고 다음 `case`코드를 수행하는 방법으로 `fallthrough` 키워드를 사용할 수 있다.
+
+### 룬(rune) 타입 <a href="#extra-rune" id="extra-rune"></a>
+
+Go의 기본 타입 중에 `rune` 타입이 엄청 생소했다.
+
+`rune` 타입이 생긴 이유를 이해하기 위해서는 컴퓨터에서 사용한 문자에 대한 역사를 살펴봐야 한다.
+
+현대 운영체제가 나오기 이전에는 컴퓨터에서 사용하는 문자는 표준 영어 알파벳(52자)만 사용했다.
+
+**하나의 바이트**로 모두 표현이 가능했고 동일한 바이트 값이 다른 시스템에서도 동일한 문자로 변환하는 것을 보장하기 위해 **ASCII**라는 표준이 사용되었다.
+
+
+
+하지만, 영어 알파벳 말고도 세상에는 수 많은 문자 체계가 존재했고 이를 모두 표현하기 위해 4바이트 값의 집합인 **유니코드(Unicode)** 표준이 추가되었다.
+
+_Go는 rune 타입을 사용해서 유니코드의 값을 표현_한다.
+
+
+
+Go에서 문자열을 다룰 때 주의해야 하는 점들이 있다.
+
+#### len(문자열) <a href="#rune-len" id="rune-len"></a>
+
+len 함수를 사용해서 문자열 길이를 구할 때 문자 수가 아니라 바이트 단위로 반환한다.
+
+```go
+asciiString := "ABCDE" // 알파벳은 1바이트씩 차지한다.
+utf8String := "가나다라마" // 한글은 유니코드 문자로 3바이트씩 차지한다.
+fmt.Println(len(asciiString))    // 5
+fmt.Println(len(utf8String))    // 15
+```
+
+문자열의 길이를 구하고 싶다면 **unicode/utf8** 패키지의 **RuneCountInString** 함수로 구해야 한다.
+
+```go
+fmt.Println(utf8.RuneCountInString(asciiString)) // 5
+fmt.Println(utf8.RuneCountInString(utf8String)) // 5
+```
+
+#### 바이트 슬라이스 <a href="#rune-byteslice" id="rune-byteslice"></a>
+
+바로 위에서 언급한 것과 같이 바이트 단위로 사용할 땐 주의해야 한다.
+
+```go
+asciiBytes := []byte(asciiString)
+utf8Bytes := []byte(utf8String)
+asciiBytesPartial := asciiBytes[3:]
+utf8BytesPartial := utf8Bytes[3:]
+fmt.Println(string(asciiBytesPartial))    // DE
+fmt.Println(string(utf8BytesPartial))    // 나다라마
+```
+
+바이트 슬라이스가 아니라 룬 슬라이스로 변환하여 사용해야 한다.
+
+```go
+asciiRunes := []rune(asciiString)
+utf8Runes := []rune(utf8String)
+asciiRunesPartial := asciiRunes[3:]
+utf8RunesPartial := utf8Runes[3:]
+fmt.Println(string(asciiRunesPartial))    // DE
+fmt.Println(string(utf8RunesPartial))    // 라마
+```
+
+#### for...range 루프 <a href="#rune-for-range" id="rune-for-range"></a>
+
+두 가지 주의할 점이 있다.
+
+첫번째로 문자열을 바이트 슬라이스로 for...range 루프 사용을 주의해야 한다.
+
+두번째로는 range에서 반환하는 첫번째 인자 값이 바이트 인덱스 값이라는 것이다.
+
+```go
+for index, currentByte := range asciiBytes {    // ascii bytes
+    fmt.Printf("%d: %s\n", index, string(currentByte))
+    /*
+    0: A
+    1: B
+    2: C
+    3: D
+    4: E
+    */
+}
+for index, currentByte := range utf8Bytes {    // unicode bytes
+    fmt.Printf("%d: %s\n", index, string(currentByte))
+    /*
+    0: ê
+    1: °
+    2: 
+    3: ë
+    4:
+    ... 
+    */
+}
+```
+
+위는 바이트 슬라이스로 for문을 순회했을 때의 코드이다.
+
+아래 코드는 문자열을 순회했을 때의 코드인데 `index` 값도 주의깊게 봐야한다.
+
+```go
+for index, currentRune := range asciiString {    // ascii string
+    fmt.Printf("%d: %s\n", index, string(currentRune))
+    /*
+    0: A
+    1: B
+    2: C
+    3: D
+    4: E
+    */
+}
+for index, currentRune := range utf8String {    // unicode string
+    fmt.Printf("%d: %s\n", index, string(currentByte))
+    /*
+    0: 가
+    3: 나
+    6: 다
+    9: 라
+    12: 마
+    */
+}
+```
+
