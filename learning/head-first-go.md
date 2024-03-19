@@ -1,3 +1,7 @@
+---
+description: 제이 맥가브렌 저
+---
+
 # ▪️ Head First Go
 
 ## 구조체(struct) <a href="#go-struct" id="go-struct"></a>

@@ -1,3 +1,7 @@
+---
+description: 조슈아 블로크 저
+---
+
 # ▪️ Effective Java
 
 ## \[2] Builder <a href="#builder" id="builder"></a>

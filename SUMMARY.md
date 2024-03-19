@@ -22,6 +22,8 @@
 * [▪️ Head First Go](learning/head-first-go.md)
 * [▪️ Effective Java](learning/effective-java.md)
 * [▪️ 도커 교과서](learning/docker-course-book.md)
+* [▪️ 데이터 중심 애플리케이션 설계](learning/undefined.md)
+* [▪️ Unit Testing](learning/unit-testing.md)
 
 ## 🔳 Reading
 
